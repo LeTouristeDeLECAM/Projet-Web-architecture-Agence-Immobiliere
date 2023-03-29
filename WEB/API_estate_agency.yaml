@@ -1,0 +1,521 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: Real Estate Agency
+  description: API of a real estate agency to manage the properties and tickets
+paths:
+  /appartement:
+    get:
+      tags:
+        - Property Management
+      summary: Get all appartements
+      description: Get all appartements
+      operationId: getAllAppartements
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Appartement'
+        '500':
+          description: Internal Server Error
+
+    post:
+      tags:
+        - Property Management
+      summary: Add an appartement
+      description: Add an appartement
+      operationId: addAppartement
+      requestBody:
+        description: Appartement to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Appartement'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+
+  /appartement/{appart_Id}:
+    get:
+      tags:
+        - Property Management
+      summary: Get an appartement
+      description: Get an appartement
+      operationId: getAppartementById
+      parameters:
+        - name: appart_Id
+          in: path
+          description: ID of the appartement
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appartement'
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+    
+
+    
+    put: 
+      tags:
+        - Property Management
+      summary: Update an appartement
+      description: Update an appartement
+      operationId: updateAppartement
+      parameters:
+        - name: appart_Id
+          in: path
+          description: ID of the appartement
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Appartement to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Appartement'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+    
+    delete: 
+      tags:
+        - Property Management
+      summary: Delete an appartement
+      description: Delete an appartement
+      operationId: deleteAppartement
+      parameters:
+        - name: appart_Id
+          in: path
+          description: ID of the appartement
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+
+  /appartement/{appart_Id}/ticket:
+    get:
+      tags:
+        - Ticket Management
+      summary: Get all tickets of an appartement
+      description: Get all tickets of an appartement
+      operationId: getAllTicketsOfAppartement
+      parameters:
+        - name: appart_Id
+          in: path
+          description: ID of the appartement
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ticket'
+        '500':
+          description: Internal Server Error
+
+
+    post:
+      tags:
+        - Ticket Management
+      summary: Add a ticket to an appartement
+      description: Add a ticket to an appartement
+      operationId: addTicketToAppartement
+      parameters:
+        - name: appart_Id
+          in: path
+          description: ID of the appartement
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Ticket to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ticket'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+
+
+
+
+
+  /ticket/{ticket_Id}: 
+    get:
+      tags:
+        - Ticket Management
+      summary: Get a ticket of an appartement
+      description: Get a ticket of an appartement
+      operationId: getTicketOfAppartement
+      parameters:
+        - name: ticket_Id
+          in: path
+          description: ID of the ticket
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ticket'
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+    
+    
+    
+    put: 
+      tags:
+        - Ticket Management
+      summary: Update a ticket of an appartement
+      description: Update a ticket of an appartement
+      operationId: updateTicketOfAppartement
+      parameters:
+        - name: ticket_Id
+          in: path
+          description: ID of the ticket
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Ticket to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ticket'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+
+  /ticket/{ticket_Id}/repair_estimate:
+    get:
+      tags:
+        - Repair estimate Management
+      summary: Get all estimates repair of a ticket
+      description: Get all estimates repair of a ticket
+      operationId: getAllEstimatesOfTicket
+      parameters:
+        - name: ticket_Id
+          in: path
+          description: ID of the ticket
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/repair_estimate'
+        '500':
+          description: Internal Server Error
+    post:
+      tags:
+        - Repair estimate Management
+      summary: Add an estimate repair to a ticket
+      description: Add an estimate repair to a ticket
+      operationId: addEstimateToTicket
+      parameters:
+        - name: ticket_Id
+          in: path
+          description: ID of the ticket
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Estimate to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/repair_estimate'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+    
+    delete: 
+      tags:
+        - Repair estimate Management
+      summary: Delete a estimate repair of a ticket
+      description: Delete a estimate repair of a ticket
+      operationId: deleteEstimateOfTicket
+      parameters:
+        - name: ticket_Id
+          in: path
+          description: ID of the ticket
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+
+
+
+  /appartement/{appart_Id}/renter: 
+    get:
+      tags:
+        - Renter Management
+      summary: Get the renter of an appartement
+      description: Get the renter of an appartement
+      operationId: getRenterOfAppartement
+      parameters:
+        - name: appart_Id
+          in: path
+          description: ID of the appartement
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Renter'
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+    
+    post:
+      tags:
+        - Renter Management
+      summary: Add a renter to an appartement
+      description: Add a renter to an appartement
+      operationId: addRenterToAppartement
+      parameters:
+        - name: appart_Id
+          in: path
+          description: ID of the appartement
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Renter to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Renter'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+    
+    put: 
+      tags:
+        - Renter Management
+      summary: Update the renter of an appartement
+      description: Update the renter of an appartement
+      operationId: updateRenterOfAppartement
+      parameters:
+        - name: appart_Id
+          in: path
+          description: ID of the appartement
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Renter to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Renter'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+    
+    delete: 
+      tags:
+        - Renter Management
+      summary: Delete the renter of an appartement
+      description: Delete the renter of an appartement
+      operationId: deleteRenterOfAppartement
+      parameters:
+        - name: appart_Id
+          in: path
+          description: ID of the appartement
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+
+     
+
+
+
+
+components: 
+  schemas:
+    Appartement:
+      type: object
+      properties:
+        appart_Id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        description:
+          type: string
+        price:
+          type: integer
+          format: int64
+        surface:
+          type: integer
+          format: int64
+        nbRooms:
+          type: integer
+          format: int64
+        address:
+          type: string
+
+        
+
+    Ticket:
+      type: object
+      properties:
+        ticket_Id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum:
+            - NEW
+            - IN_PROGRESS
+            - DONE
+        appartement:
+          $ref: '#/components/schemas/Appartement'
+    
+    repair_estimate:
+      type: object
+      properties:
+        estimate_Id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        description:
+          type: string
+        price:
+          type: integer
+          format: int64
+        ticket:
+          $ref: '#/components/schemas/Ticket'
+    
+    Renter: 
+      type: object
+      properties:
+        renter_Id:
+          type: integer
+          format: int64
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        appartement:
+          $ref: '#/components/schemas/Appartement'
+          
+
+
+
+
+
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/LeTouristeDeLECAM/Agence_Immobiliere/1.0
