@@ -1,3 +1,6 @@
+//------------------------------------------------------
+const hostname = '127.0.0.1';
+const port = 3000;
 // Import express 
 let express = require('express');
 
@@ -5,11 +8,8 @@ let express = require('express');
 let app = express();
 
 app.use(express.json());
-
-const cors = require('cors');
-app.use(cors());
-
 require('dotenv').config();
+
 
 // Importing the database model
 const Sequelize = require('sequelize');
@@ -19,8 +19,8 @@ const db = require('./db.js');
 //db.sync()
 db.sync({alter: true})
 
-let router = require('./routes');
-app.use("/api", router);
+let router = require('./routes.js');
+app.use("/", router);
 
 // Manage bad route
 app.use(function (req, res, next) {
@@ -28,6 +28,6 @@ app.use(function (req, res, next) {
 });
 
  // Launch app to listen to specified port
-const port = process.env.PORT || 3000;
-app.listen(port, function () {
-    console.log('Runnings on ' + process.env.SERVER + port); });
+ app.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+  });

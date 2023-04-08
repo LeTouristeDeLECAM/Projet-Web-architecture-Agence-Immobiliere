@@ -1,3 +1,15 @@
+// This model is used to store the appartement information
+// the model follows this schema:
+// appart_Id	integer($int64)
+// title	string
+// description	string
+// price	integer($int64)
+// surface	integer($int64)
+// nbRooms	integer($int64)
+// address	string
+// https://app.swaggerhub.com/apis/LeTouristeDeLECAM/Agence_Immobiliere/1.0#/Appartement
+
+
 const sequelize = require('sequelize')
 const db=require('../db.js')
 
