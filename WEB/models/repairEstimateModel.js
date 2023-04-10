@@ -1,6 +1,7 @@
 // This model is used to store the repair estimate information
 // the model follows this schema:
 // estimate_Id	integer($int64)
+// ticket_Id	integer($int64)
 // title	string
 // description	string
 // price	integer($int64)
@@ -14,6 +15,12 @@ const RepairEstimate = db.define('repair_estimate', {
         type: sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
+        allowNull: false
+    },
+
+    ticket_Id: {
+        type: sequelize.INTEGER,
+        foreignKey: true,
         allowNull: false
     },
     title: {type:sequelize.STRING,allowNull:true } ,

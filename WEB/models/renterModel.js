@@ -1,6 +1,7 @@
 // This model is used to store the renter information
 // the model follows this schema:
 // renter_Id	integer($int64)
+// appart_Id	integer($int64)
 // firstName	string
 // lastName	string
 // email	string
@@ -10,10 +11,15 @@ const sequelize = require('sequelize')
 const db=require('../db.js')
 
 const Renter = db.define('renter', {
-    renter_id: {
+    renter_Id: {
         type: sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
+        allowNull: false
+    },
+    appart_Id: {
+        type: sequelize.INTEGER,
+        foreignKey: true,
         allowNull: false
     },
     firstName: {type:sequelize.STRING,allowNull:true } ,

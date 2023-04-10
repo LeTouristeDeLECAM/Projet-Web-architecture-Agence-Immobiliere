@@ -14,7 +14,7 @@ const sequelize = require('sequelize')
 const db=require('../db.js')
 
 const Appartement = db.define('appartement', {
-    appart_id: {
+    appart_Id: {
         type: sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,

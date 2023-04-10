@@ -297,6 +297,8 @@ paths:
           description: Bad Request
         '500':
           description: Internal Server Error
+
+  /repair_estimate/{estimate_Id}:
     
     delete: 
       tags:
@@ -305,9 +307,9 @@ paths:
       description: Delete a estimate repair of a ticket
       operationId: deleteEstimateOfTicket
       parameters:
-        - name: ticket_Id
+        - name: estimate_Id
           in: path
-          description: ID of the ticket
+          description: ID of the repair estimate
           required: true
           schema:
             type: integer
@@ -476,8 +478,9 @@ components:
             - NEW
             - IN_PROGRESS
             - DONE
-        appartement:
-          $ref: '#/components/schemas/Appartement'
+        appart_Id:
+          type: integer
+          format: int64
     
     repair_estimate:
       type: object
@@ -492,8 +495,10 @@ components:
         price:
           type: integer
           format: int64
-        ticket:
-          $ref: '#/components/schemas/Ticket'
+        ticket_Id:
+          type: integer
+          format: int64
+          
     
     Renter: 
       type: object
@@ -507,8 +512,9 @@ components:
           type: string
         email:
           type: string
-        appartement:
-          $ref: '#/components/schemas/Appartement'
+        appart_Id:
+          type: integer
+          format: int64
           
 
 
