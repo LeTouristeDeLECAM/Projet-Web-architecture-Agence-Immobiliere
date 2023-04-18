@@ -1,16 +1,15 @@
 const Sequelize = require('sequelize');
-const sequelize = require('../db.js');
+const sequelize = require('./db.js');
 
 const db ={};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 //Models/tables
-db.Appartement = require('./appartementModel.js');
-db.Renter = require('./renterModel.js');
-db.RepairEstimate = require('./repairEstimateModel.js');
-db.Ticket = require('./ticketModel.js');
-db.User = require('./userModel.js');
+db.Appartement = require('./models/appartementModel.js');
+db.Renter = require('./models/renterModel.js');
+db.RepairEstimate = require('./models/repairEstimateModel.js');
+db.Ticket = require('./models/ticketModel.js');
 
 // models associations
 //ticket-appartement

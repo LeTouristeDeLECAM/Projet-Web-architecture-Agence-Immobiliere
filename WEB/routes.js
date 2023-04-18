@@ -6,6 +6,33 @@ const appartement_controller = require('./controllers/appartement_controller.js'
 const renterController = require('./controllers/renterController.js');
 const repairEstimateController = require('./controllers/repairEstimateController.js');
 const ticketController = require('./controllers/ticketController.js');
+//const userController = require('./controllers/userController.js');
+//const {User}= require('./models');
+const jwt = require('jsonwebtoken');
+
+// create a fonction is authorized
+function isAuthorized(req, res, next) {
+    if (typeof req.headers.authorization !== "undefined") {
+        // retrieve the authorization header and parse out the
+        // JWT using the split function
+        let token = req.headers.authorization.split(" ")[1];
+        // Here we validate that the JSON Web Token is valid and has been
+        jwt.verify(token, "my_secret_key", (err, payload) => {
+            if (err) {
+                res.status(401).json({error: "Not Authorized"});
+                console.log("Not Authorized");
+                return;
+            }
+            req.user = payload; // allow to use the user id the controller
+            return next();
+        });
+    } 
+    else { 
+        res.status(403).json({error: "Nothing sent in the authorized felid !"});
+        console.log("Nothing sent in the authorized felid!");
+    }
+ }
+
 
 
 //------------------ Appartement routes ------------------//
@@ -19,7 +46,7 @@ router.get('/appartement/:appart_Id', appartement_controller.findAppartementById
 // update appartement
 router.put('/appartement/:appart_Id', appartement_controller.updateAppartement);
 // delete appartement
-router.delete('/appartement/:appart_Id', appartement_controller.deleteAppartement);
+router.delete('/appartement/:appart_Id',isAuthorized,  appartement_controller.deleteAppartement);
 
 //------------------ Renter routes ------------------//
 // GET request for a Renter of an appartement.
@@ -59,6 +86,24 @@ router.get('/ticket/:ticket_Id', ticketController.ticketDetail);
 
 //PUT request for updating a ticket
 router.put('/ticket/:ticket_Id', ticketController.ticketUpdate);
+
+// ------------------ Authentification routes ------------------//
+// POST 
+router.post('/login',async function (req, res, next) {
+    
+    const jwtKey = "my_secret_key";
+    const jwtExpirySeconds = 300;
+
+    let payload = { id: 1};
+    let token = jwt.sign(payload, jwtKey, {
+        algorithm: "HS256",
+        expiresIn: jwtExpirySeconds
+    });
+    res.json({"token": token,"maxAge": jwtExpirySeconds * 1000});
+
+    // res.cookie("token", token, { httpOnly: true, secure: true, maxAge: jwtExpirySeconds * 1000 });
+
+});
 
 
 
