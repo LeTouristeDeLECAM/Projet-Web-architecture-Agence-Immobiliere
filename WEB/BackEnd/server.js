@@ -10,6 +10,9 @@ let app = express();
 app.use(express.json());
 require('dotenv').config();
 
+//
+let cors = require('cors');
+app.use(cors());
 
 // Importing the database model
 const Sequelize = require('sequelize');
