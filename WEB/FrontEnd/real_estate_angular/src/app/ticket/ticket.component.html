@@ -1,1 +1,63 @@
-<p>ticket works!</p>
+<!-- This page display a list of each ticket of an appartement  
+The title of the page comport the appartement_Id of the appartement
+each ticket is displayed in a frame using MatCardModule
+Each ticket shown comport a <button></button> to edit the ticket , a <button></button> to show the ticket details
+There is also a form to create a new ticket for an appartement, the form is displayed in a frame using MatCardModule
+The form comport a <button></button> to create the ticket
+The form comport required fields : 'title', 'description', 'status', 'appart_Id' -->
+
+<h1>Ticket list for the appartement ID : {{ticketList[0].appart_Id}}</h1>
+
+<!-- create a new ticket -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Create a new ticket</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <form [formGroup]="postForm" (ngSubmit)="addTicket(ticket)" > 
+                    <!-- <form > -->
+
+                        <mat-form-field>
+                            <input matInput ="title" formControlName="title"  placeholder="Title">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput ="description" formControlName="description"  placeholder="Description">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput ="status" formControlName="status"  placeholder="Status">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput ="appart_Id" formControlName="appart_Id"  placeholder="Appartement ID">
+                        </mat-form-field>
+                    </form>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" type="submit">Create</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+
+<!-- list all tickets -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let ticket of ticketList">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>{{ticket.title}}</mat-card-title>
+                    <mat-card-subtitle>{{ticket.description}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>Status : {{ticket.status}}</p>
+                    <p>Appartement ID : {{ticket.appart_Id}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" (click)="editTicket(ticket)">Edit</button>
+                    <button mat-raised-button color="primary" (click)="getTicketById(ticket.ticket_Id)">Details</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>

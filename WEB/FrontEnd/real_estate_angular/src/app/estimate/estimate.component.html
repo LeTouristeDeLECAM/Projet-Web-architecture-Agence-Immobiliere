@@ -1,1 +1,60 @@
-<p>estimate works!</p>
+<!-- This Html list the estimate component which include 'estimate_Id', 'title', 'description', 'price','ticket_Id'
+Each estimate shown comport a <button></button> to delete the estimate.
+There is also a form to create a new estimate, , the form is displayed in a frame using MatCardModule
+The form comport a <button></button> to create the ticket
+The form comport required fields : 'title', 'description', 'price','ticket_Id' -->
+
+<h1>Estimate list for the ticket ID : {{estimateList[0].ticket_Id}}</h1>
+
+<!-- create a new estimate -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Create a new estimate</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <form [formGroup]="postForm" (ngSubmit)="addEstimate()" > 
+                    
+                        <mat-form-field>
+                            <input matInput ="title" formControlName="title"  placeholder="Title">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput ="description" formControlName="description"  placeholder="Description">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput ="price" formControlName="price"  placeholder="Price">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput ="ticket_Id" formControlName="ticket_Id"  placeholder="Ticket ID">
+                        </mat-form-field>
+                    </form>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" type="submit">Create</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+
+<!-- list all estimates -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let estimate of estimateList">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>{{estimate.title}}</mat-card-title>
+                    <mat-card-subtitle>{{estimate.description}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>Price : {{estimate.price}}</p>
+                    <p>Ticket ID : {{estimate.ticket_Id}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" (click)="deleteEstimate(estimate.estimate_Id)">Delete</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
