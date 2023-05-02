@@ -12,15 +12,6 @@ export class AppartementComponent {
   appartementList: Appartement[] = [];
   appartement = new Appartement();
 
-  postForm = new FormGroup({
-    
-    title: new FormControl(''),
-    description: new FormControl(''),
-    price: new FormControl(''),
-    surface: new FormControl(''),
-    nbRooms: new FormControl(''),
-    address: new FormControl('')
-  });
   
   
 
@@ -46,18 +37,18 @@ export class AppartementComponent {
   }
 
   // fonction to add an appartement to the list
-   addAppart( ){
-    //address: string, nbRooms: number, surface: number, price: number, description: string, title: string
-    //addAppart(  appartement: Appartement ){
-    //this.appartement = new Appartement();
-    console.log("le titre est flag 1",this.postForm.value);
+    addAppart(title: string, description: string, price: any, surface: any, nbRooms: any, address: string){
+    
+    console.log("le titre est flag 1",title);
+    console.log("le prix est flag 1",parseInt(price));
 
-    // this.appartement.address= this.postForm.value.address?.toString();
-    // this.appartement.nbRooms= this.postForm.value.nbRooms;
-    // this.appartement.surface= this.postForm.value.surface;
-    // this.appartement.price =  this.postForm.value.price;
-    // this.appartement.description = this.postForm.value.description;
-    // this.appartement.title =  this.postForm.value.title;
+    this.appartement.title = title;
+    this.appartement.description = description;
+    this.appartement.price = parseInt(price);
+    this.appartement.surface = parseInt(surface);
+    this.appartement.nbRooms = parseInt(nbRooms);
+    this.appartement.address = address;
+
 
     console.log(this.appartement);
     this.propertyManagementService.addAppartement(this.appartement).subscribe((res) => {

@@ -28,7 +28,7 @@ export class EstimateManagementService {
   }
 
   // fonction add an estimate to a ticket
-  public addEstimate(estimate: Estimate): Observable<any> {
+  public addEstimate(estimate: any): Observable<any> {
     return this.http.post<Estimate>(this.baseUrl + 'ticket/' + estimate.ticket_Id+'/repair_estimate', estimate,
      {params: new HttpParams().set('title', estimate.title ).set('description', estimate.description).set('price', estimate.price).set('ticket_Id', estimate.ticket_Id.toString())}); 
   }

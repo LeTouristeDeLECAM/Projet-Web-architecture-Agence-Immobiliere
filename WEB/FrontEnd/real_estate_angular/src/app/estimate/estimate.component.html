@@ -1,8 +1,4 @@
-<!-- This Html list the estimate component which include 'estimate_Id', 'title', 'description', 'price','ticket_Id'
-Each estimate shown comport a <button></button> to delete the estimate.
-There is also a form to create a new estimate, , the form is displayed in a frame using MatCardModule
-The form comport a <button></button> to create the ticket
-The form comport required fields : 'title', 'description', 'price','ticket_Id' -->
+
 
 <h1>Estimate list for the ticket ID : {{estimateList[0].ticket_Id}}</h1>
 
@@ -24,16 +20,19 @@ The form comport required fields : 'title', 'description', 'price','ticket_Id' -
                             <input matInput ="description" formControlName="description"  placeholder="Description">
                         </mat-form-field>
                         <mat-form-field>
-                            <input matInput ="price" formControlName="price"  placeholder="Price">
+                            <input matInput ="price" type="number" formControlName="price"  placeholder="Price">
                         </mat-form-field>
                         <mat-form-field>
                             <input matInput ="ticket_Id" formControlName="ticket_Id"  placeholder="Ticket ID">
                         </mat-form-field>
+
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" type="submit" [disabled]="!postForm.valid" >Create</button>
+                            <!-- >Create</button> -->
+                        </mat-card-actions>
                     </form>
                 </mat-card-content>
-                <mat-card-actions>
-                    <button mat-raised-button color="primary" type="submit">Create</button>
-                </mat-card-actions>
+                
             </mat-card>
         </div>
     </div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Estimate } from '../estimate-management.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { EstimateManagementService } from '../estimate-management.service';
+import { Validators } from '@angular/forms';
 
 
 @Component({
@@ -17,10 +18,10 @@ export class EstimateComponent {
 
   //create a form group
   postForm = new FormGroup({
-    title: new FormControl(''),
-    description: new FormControl(''),
-    price: new FormControl(''),
-    ticket_Id: new FormControl('')
+    title: new FormControl('',Validators.required),
+    description: new FormControl('',Validators.required),
+    price: new FormControl('',Validators.required),
+    ticket_Id: new FormControl('',Validators.required)
   });
 
   constructor(private estimateManagementService: EstimateManagementService) { }
@@ -37,12 +38,14 @@ export class EstimateComponent {
 
   // add an estimate
   addEstimate() {
-    // this.estimate.title = this.postForm.value.title;
-    // this.estimate.description = this.postForm.value.description;
-    // this.estimate.price = this.postForm.value.price;
-    // this.estimate.ticket_Id = this.postForm.value.ticket_Id;
+    console.log(this.postForm.value);
+    
+    this.estimateManagementService.addEstimate( this.postForm.value).subscribe(res => {
+      console.log(res);
+    }
+    );
 
-    this.estimateManagementService.addEstimate(this.estimate).subscribe()
+
   }
 
 

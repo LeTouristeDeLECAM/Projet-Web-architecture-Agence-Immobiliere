@@ -15,32 +15,47 @@
                     <mat-card-title>Create a new property</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
-                    <form [formGroup]="postForm" (ngSubmit)="addAppart()" >
-                    
-                        
+                    <form > 
                         <mat-form-field>
-                            <input matInput ="title" formControlName="title"  placeholder="Title">
+                            <input matInput ="title"  name="title"  #title placeholder="Title">
+                            <!-- formControlName="title" -->
                         </mat-form-field>
                         <mat-form-field>
-                            <input matInput ="description" formControlName="description"  placeholder="Description">
+                            <input matInput ="description"  #description placeholder="Description">
+                            <!-- formControlName="description" -->
                         </mat-form-field>
                         <mat-form-field>
-                            <input matInput ="price" formControlName="price"  placeholder="Price">
+                            <!-- <input matInput ="price" formControlName="price" #price placeholder="Price"> -->
+                            <!-- <input matInput type="number" formControlName="price" #price placeholder="Price"> -->
+                            <!-- input a number for the price -->
+                            <input matInput type="number"  #price placeholder="Price">
+
+                            <!-- formControlName="price" -->
+
                         </mat-form-field>
                         <mat-form-field>
-                            <input matInput ="surface" formControlName="surface"  placeholder="Surface">
+                            <input matInput type="number"  #surface  placeholder="Surface">
+                            <!-- formControlName="surface" -->
                         </mat-form-field>
                         <mat-form-field>
-                            <input matInput ="nbRooms" formControlName="nbRooms"  placeholder="Number of rooms">
+                            <input matInput type="number"  #nbRooms placeholder="Number of rooms">
+                            <!-- formControlName="nbRooms" -->
                         </mat-form-field>
                         <mat-form-field>
-                            <input matInput ="address" formControlName="address"  placeholder="Address">
+                            <input matInput ="address"  #address placeholder="Address">
+                            <!-- formControlName="address" -->
                         </mat-form-field>
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" type="submit" (click)="addAppart(title.value, description.value, price.value, surface.value, nbRooms.value, address.value)">Create</button>
+                            
+                            
+                             
+                        </mat-card-actions>
                     </form>
                 </mat-card-content>
-                <mat-card-actions>
-                    <button mat-raised-button color="primary" type="submit">Create</button>
-                </mat-card-actions>
+
+
+                
             </mat-card>
         </div>
     </div>
