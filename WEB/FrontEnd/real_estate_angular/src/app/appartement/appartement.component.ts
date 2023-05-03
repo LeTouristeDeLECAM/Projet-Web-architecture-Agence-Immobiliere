@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Appartement, PropertyManagementService } from '../property-management.service';
 import { NgForm } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-appartement',
@@ -12,11 +13,12 @@ export class AppartementComponent {
   appartementList: Appartement[] = [];
   appartement = new Appartement();
 
+
   
   
 
 
-  constructor(private propertyManagementService: PropertyManagementService) { }
+  constructor(private propertyManagementService: PropertyManagementService, private router:Router) { }
   ngOnInit(){
     this.propertyManagementService.getAppartementList().subscribe(
       data => {
@@ -34,6 +36,7 @@ export class AppartementComponent {
   //fonction to delete an appartements of the list
   deleteAppart(appart_Id: number){
     this.propertyManagementService.deleteAppartement(appart_Id).subscribe()
+    window.location.reload();
   }
 
   // fonction to add an appartement to the list
@@ -53,23 +56,25 @@ export class AppartementComponent {
     console.log(this.appartement);
     this.propertyManagementService.addAppartement(this.appartement).subscribe((res) => {
       console.log(res);
+
     });
+    window.location.reload();
 
   }
   // fonction to show ticket list
   showTicketList(appart_Id: number){
-      this.propertyManagementService.deleteAppartement( appart_Id).subscribe( )
+    console.log("appart_Id:", appart_Id);
+    this.router.navigate(['/ticket', appart_Id]);
     }
-    // this.propertyManagementService.getTicketList().subscribe(
-    //   data => {
-    //     this.ticketList = data;
-    //     console.log(this.ticketList);
-    //   }
-    // )
+  
+
+
 
     // fonction to show the renter of an apartment
     showRenter (appart_Id: number){
-      this.propertyManagementService.deleteAppartement( appart_Id).subscribe( )
+      console.log("appart_Id renter:", appart_Id);
+      this.router.navigate(['/renter', appart_Id]);
+      
     }
 
 

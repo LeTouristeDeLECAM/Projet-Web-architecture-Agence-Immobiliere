@@ -1,0 +1,28 @@
+.mat-toolbar {
+  background-color: #0d6031; /* sets the background color for the toolbar */
+  color: #fff; /* sets the font color for the toolbar */
+}
+
+.mat-icon {
+  font-size: 24px; /* sets the font size for the material icon */
+  margin-right: 10px; /* adds some margin between the icon and the text */
+}
+
+span {
+  font-weight: bold; /* sets the font weight for the text */
+  font-size: 20px; /* sets the font size for the text */
+  margin-right: 10px; /* adds some margin between the icon and the text */
+}
+
+.spacer {
+  flex: 1 1 auto; /* sets the flex property to fill the available space */
+}
+
+a {
+  color: #fff; /* sets the font color for the link */
+  text-decoration: none; /* removes the underline from the link */
+}
+
+a:hover {
+  color: #90caf9; /* changes the font color when hovering over the link */
+}

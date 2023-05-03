@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Renter } from '../renter-management.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { RenterManagementService } from '../renter-management.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -16,6 +17,9 @@ export class RenterComponent {
   //create a renter
   renter = new Renter();
 
+  // id : number | undefined |any;
+
+
   //create a form group
   postForm = new FormGroup({
     firstName: new FormControl(''),
@@ -24,11 +28,13 @@ export class RenterComponent {
     appart_Id: new FormControl('')
   });
 
-  constructor(private renterManagementService: RenterManagementService) { }
+  constructor(private renterManagementService: RenterManagementService, private router: ActivatedRoute, private route: Router ) { }
+  
+  id= this.router.snapshot.params['id'];
 
   //Get list of renter
   ngOnInit() { 
-    this.renterManagementService.getRenterList(2).subscribe(
+    this.renterManagementService.getRenterList(this.id).subscribe(
       data => {
         this.renterList = data;
         console.log(this.renterList);

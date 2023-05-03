@@ -27,8 +27,8 @@ export class TicketManagementService {
   // temporary
   appart_Id : Number = 2;
 
-  public getTicketList(): Observable<any> {
-    console.log(this.baseUrl +'appartement/1/ticket');
+  public getTicketList(id:number): Observable<any> {
+    console.log(this.baseUrl +'appartement/'+id+'/ticket');
     return this.http.get<Ticket[]>(this.baseUrl +'appartement/'+2+'/ticket');
   
   }

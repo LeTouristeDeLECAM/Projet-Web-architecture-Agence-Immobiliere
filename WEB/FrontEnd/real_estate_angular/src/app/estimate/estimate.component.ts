@@ -3,7 +3,7 @@ import { Estimate } from '../estimate-management.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { EstimateManagementService } from '../estimate-management.service';
 import { Validators } from '@angular/forms';
-
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-estimate',
@@ -24,11 +24,13 @@ export class EstimateComponent {
     ticket_Id: new FormControl('',Validators.required)
   });
 
-  constructor(private estimateManagementService: EstimateManagementService) { }
+  constructor(private estimateManagementService: EstimateManagementService,  private router: ActivatedRoute, private route: Router) { }
+
+  id = this.router.snapshot.params['id'];
 
   //Get list of estimate
   ngOnInit() { //!!!!!!! change the number in getEstimateList to the ticket_Id of the ticket you want to see the estimate
-    this.estimateManagementService.getEstimateList(1).subscribe(
+    this.estimateManagementService.getEstimateList(this.id).subscribe(
       data => {
         this.estimateList = data;
         console.log(this.estimateList);

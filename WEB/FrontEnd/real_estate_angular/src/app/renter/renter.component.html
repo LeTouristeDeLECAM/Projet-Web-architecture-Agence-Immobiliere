@@ -2,9 +2,9 @@
 Each renter shown comport a <button></button> to delete the renter, a <button></button> to update the renter.
 There is also a form to create a new renter for an appartement, , the form is displayed in a frame using MatCardModule
 The form comport a <button></button> to create the ticket
-The form comport required fields : 'first_name', 'last_name', 'email', 'phone_number', 'appartement_Id' -->
+The form comport required fields : 'first_name', 'last_name', 'email' -->
 
-<h1>Renter list for the appartement ID : {{renterList[0].appart_Id}}</h1>
+<h1>Renter list for the appartement ID : {{id}}</h1>
 
 <!-- create a new renter -->
 <div class="container">
@@ -12,7 +12,7 @@ The form comport required fields : 'first_name', 'last_name', 'email', 'phone_nu
         <div class="col-md-4">
             <mat-card>
                 <mat-card-header>
-                    <mat-card-title>Create a new renter</mat-card-title>
+                    <mat-card-title>Create a new renter for Appartement ID : {{id}}</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
                     <form [formGroup]="postForm" (ngSubmit)="addRenter()" > 
@@ -26,9 +26,9 @@ The form comport required fields : 'first_name', 'last_name', 'email', 'phone_nu
                         <mat-form-field>
                             <input matInput ="email" formControlName="email"  placeholder="Email">
                         </mat-form-field>
-                        <mat-form-field>
-                            <input matInput ="appartement_Id" formControlName="appartement_Id"  placeholder="Appartement ID">
-                        </mat-form-field>
+                        <!-- <mat-form-field>
+                            <input matInput ="appart_Id" formControlName="appart_Id"  placeholder="Appartement ID: {{id}}">
+                        </mat-form-field> -->
                     </form>
                 </mat-card-content>
                 <mat-card-actions>
@@ -54,6 +54,7 @@ The form comport required fields : 'first_name', 'last_name', 'email', 'phone_nu
                 <mat-card-actions>
                     <button mat-raised-button color="primary" (click)="deleteRenter(renter.renter_Id)">Delete</button>
                     <button mat-raised-button color="primary" (click)="updateRenter(renter)">Update</button>
+                    
                 </mat-card-actions>
             </mat-card>
         </div>

@@ -15,6 +15,9 @@ import { TicketComponent } from './ticket/ticket.component';
 import { EstimateComponent } from './estimate/estimate.component';
 import { RenterComponent } from './renter/renter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './navbar/navbar.component';
+import {MatToolbarModule} from '@angular/material/toolbar'; 
+import {MatIconModule} from '@angular/material/icon';
 
 
 
@@ -24,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppartementComponent,
     TicketComponent,
     EstimateComponent,
-    RenterComponent
+    RenterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatFormFieldModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    MatToolbarModule, 
+    MatIconModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

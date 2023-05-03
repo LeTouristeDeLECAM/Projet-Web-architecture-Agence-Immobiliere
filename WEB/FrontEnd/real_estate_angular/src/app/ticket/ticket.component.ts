@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Ticket, TicketManagementService } from '../ticket-management.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-ticket',
@@ -24,11 +25,14 @@ export class TicketComponent {
   });
 
 
-  constructor(private ticketManagementService: TicketManagementService) { }
+  constructor(private ticketManagementService: TicketManagementService, private router: ActivatedRoute, private route: Router ) { }
+
+  id= this.router.snapshot.params['id'];
+
   // Get the ticket list of an apartment
   ngOnInit(){
     console.log("flag 0");
-    this.ticketManagementService.getTicketList().subscribe(
+    this.ticketManagementService.getTicketList(this.id).subscribe(
       data => {
         console.log("flag 2", data);
         this.ticketList = data;
@@ -47,6 +51,13 @@ export class TicketComponent {
       }
     )
   }
+
+  // Redirect to estimate 
+  goToEstimate(ticket_Id: number){
+    console.log("ticket_Id", ticket_Id);
+    this.route.navigate(['estimate', ticket_Id]);
+  }
+  
 
 
  

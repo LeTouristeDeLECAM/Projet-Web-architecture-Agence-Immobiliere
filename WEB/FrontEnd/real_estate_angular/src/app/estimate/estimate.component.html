@@ -1,6 +1,6 @@
 
 
-<h1>Estimate list for the ticket ID : {{estimateList[0].ticket_Id}}</h1>
+<h1>Estimate list for the ticket ID : {{id}}</h1>
 
 <!-- create a new estimate -->
 <div class="container">
@@ -8,7 +8,7 @@
         <div class="col-md-4">
             <mat-card>
                 <mat-card-header>
-                    <mat-card-title>Create a new estimate</mat-card-title>
+                    <mat-card-title>Create a new estimate for Ticket ID : {{id}}</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
                     <form [formGroup]="postForm" (ngSubmit)="addEstimate()" > 
@@ -22,9 +22,9 @@
                         <mat-form-field>
                             <input matInput ="price" type="number" formControlName="price"  placeholder="Price">
                         </mat-form-field>
-                        <mat-form-field>
+                        <!-- <mat-form-field>
                             <input matInput ="ticket_Id" formControlName="ticket_Id"  placeholder="Ticket ID">
-                        </mat-form-field>
+                        </mat-form-field> -->
 
                         <mat-card-actions>
                             <button mat-raised-button color="primary" type="submit" [disabled]="!postForm.valid" >Create</button>
