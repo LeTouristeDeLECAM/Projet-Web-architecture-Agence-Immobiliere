@@ -17,7 +17,7 @@ The form comport required fields : 'title', 'description', 'status', 'appart_Id'
                     <mat-card-title>Create a new ticket for Appartement ID : {{id}}</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
-                    <form [formGroup]="postForm" (ngSubmit)="addTicket(ticket)" > 
+                    <form [formGroup]="postForm" (ngSubmit)="addTicket()" > 
                     <!-- <form > -->
 
                         <mat-form-field>
@@ -33,7 +33,7 @@ The form comport required fields : 'title', 'description', 'status', 'appart_Id'
                             <input matInput ="appart_Id" formControlName="appart_Id"  placeholder="Appartement ID">
                         </mat-form-field> -->
                         <mat-card-actions>
-                            <button mat-raised-button color="primary" type="submit">Create</button>
+                            <button mat-raised-button color="primary" type="submit" [disabled]="!postForm.valid">Create</button>
                         </mat-card-actions>
                     </form>
                 </mat-card-content>
@@ -48,10 +48,11 @@ The form comport required fields : 'title', 'description', 'status', 'appart_Id'
         <div class="col-md-4" *ngFor="let ticket of ticketList">
             <mat-card>
                 <mat-card-header>
-                    <mat-card-title>{{ticket.title}}</mat-card-title>
-                    <mat-card-subtitle>{{ticket.description}}</mat-card-subtitle>
+                    <mat-card-title>{{ticket.title}} </mat-card-title>
+                    <mat-card-subtitle>Ticket ID : {{ticket.ticket_Id}}</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
+                    <p>Description : {{ticket.description}}</p>
                     <p>Status : {{ticket.status}}</p>
                     <p>Appartement ID : {{ticket.appart_Id}}</p>
                 </mat-card-content>

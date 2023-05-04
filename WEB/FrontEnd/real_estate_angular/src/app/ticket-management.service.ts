@@ -25,11 +25,11 @@ export class TicketManagementService {
   // Change the routes
 
   // temporary
-  appart_Id : Number = 2;
+  
 
-  public getTicketList(id:number): Observable<any> {
-    console.log(this.baseUrl +'appartement/'+id+'/ticket');
-    return this.http.get<Ticket[]>(this.baseUrl +'appartement/'+2+'/ticket');
+  public getTicketList(appart_Id:number): Observable<any> {
+    console.log(this.baseUrl +'appartement/'+appart_Id+'/ticket');
+    return this.http.get<Ticket[]>(this.baseUrl +'appartement/'+appart_Id+'/ticket');
   
   }
 
@@ -46,9 +46,9 @@ export class TicketManagementService {
   }
 
   // Create a fonction to add a ticket
-  // !!!!!!!! change the routes 
-  public addTicket(ticket: Ticket): Observable<any> {
-    return this.http.post<Ticket>(this.baseUrl + 'ticket', ticket, {params: new HttpParams().set('title', ticket.title ).set('description', ticket.description).set('status', ticket.status).set('appart_Id', ticket.appart_Id)});
+  // /appartement/{appart_Id}/ticket
+  public addTicket(ticket: any, appart_Id: number): Observable<any> {
+    return this.http.post<Ticket>(this.baseUrl + 'appartement/'+appart_Id+"/ticket", ticket, {params: new HttpParams().set('title', ticket.title ).set('description', ticket.description).set('status', ticket.status).set('appart_Id', appart_Id)});
   }
 
   // Create a fonction to update a ticket

@@ -21,16 +21,15 @@ export class EstimateComponent {
     title: new FormControl('',Validators.required),
     description: new FormControl('',Validators.required),
     price: new FormControl('',Validators.required),
-    ticket_Id: new FormControl('',Validators.required)
   });
 
   constructor(private estimateManagementService: EstimateManagementService,  private router: ActivatedRoute, private route: Router) { }
 
-  id = this.router.snapshot.params['id'];
+  ticket_Id = this.router.snapshot.params['id'];
 
   //Get list of estimate
   ngOnInit() { //!!!!!!! change the number in getEstimateList to the ticket_Id of the ticket you want to see the estimate
-    this.estimateManagementService.getEstimateList(this.id).subscribe(
+    this.estimateManagementService.getEstimateList(this.ticket_Id).subscribe(
       data => {
         this.estimateList = data;
         console.log(this.estimateList);
@@ -41,19 +40,22 @@ export class EstimateComponent {
   // add an estimate
   addEstimate() {
     console.log(this.postForm.value);
-    
-    this.estimateManagementService.addEstimate( this.postForm.value).subscribe(res => {
+
+    this.estimateManagementService.addEstimate( this.postForm.value, this.ticket_Id ).subscribe(res => {
       console.log(res);
+      window.location.reload();
     }
     );
-
-
   }
 
 
   // Delete an estimate
   deleteEstimate(estimate_Id: number) {
-    this.estimateManagementService.deleteEstimate(estimate_Id).subscribe()
+    this.estimateManagementService.deleteEstimate(estimate_Id).subscribe(res => {
+      console.log(res);
+      window.location.reload();
+    }
+    );
   }
 
 

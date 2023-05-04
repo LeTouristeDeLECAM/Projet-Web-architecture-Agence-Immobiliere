@@ -28,9 +28,9 @@ export class RenterManagementService {
   }
 
   // fonction add a renter to an appart
-  public addRenter(renter: Renter): Observable<any> {
-    return this.http.post<Renter>(this.baseUrl + 'appartement/' + renter.appart_Id+'/renter', renter,
-     {params: new HttpParams().set('firstName', renter.firstName ).set('lastName', renter.lastName).set('email', renter.email).set('appart_Id', renter.appart_Id)}); 
+  public addRenter(renter: any, appart_id: number ): Observable<any> {
+    return this.http.post<Renter>(this.baseUrl + 'appartement/' + appart_id+'/renter', {renter,appart_id},
+     {params: new HttpParams().set('appart_Id', appart_id).set('firstName', renter.firstName ).set('lastName', renter.lastName).set('email', renter.email)}); 
   }
 
   // fonction to delete a renter

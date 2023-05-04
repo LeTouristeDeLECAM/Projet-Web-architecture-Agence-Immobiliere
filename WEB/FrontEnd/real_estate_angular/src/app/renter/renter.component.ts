@@ -3,6 +3,8 @@ import { Renter } from '../renter-management.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { RenterManagementService } from '../renter-management.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Validators } from '@angular/forms';
+
 
 
 
@@ -22,10 +24,9 @@ export class RenterComponent {
 
   //create a form group
   postForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl(''),
-    appart_Id: new FormControl('')
+    firstName: new FormControl('',Validators.required),
+    lastName: new FormControl('',Validators.required),
+    email: new FormControl('',Validators.required)
   });
 
   constructor(private renterManagementService: RenterManagementService, private router: ActivatedRoute, private route: Router ) { }
@@ -44,17 +45,29 @@ export class RenterComponent {
 
   // add a renter
   addRenter() {
-    // this.renter.firstName = this.postForm.value.firstName;
-    // this.renter.lastName = this.postForm.value.lastName;
-    // this.renter.email = this.postForm.value.email;
-    // this.renter.appart_Id = this.postForm.value.appart_Id;
 
-    this.renterManagementService.addRenter(this.renter).subscribe()
+    console.log(this.postForm.value);
+
+    // this.renter.appart_Id=this.id;
+    // this.renter.email=this.postForm.email.toString;
+
+    
+    this.renterManagementService.addRenter( this.postForm.value, this.id).subscribe(res => {
+      console.log(res);
+      window.location.reload();
+    }
+    );
+    
   }
 
   // Delete a renter
   deleteRenter(renter_Id: number) {
-    this.renterManagementService.deleteRenter(renter_Id).subscribe()
+    this.renterManagementService.deleteRenter(renter_Id).subscribe(res => {
+      console.log(res);
+      window.location.reload();
+    }
+    );
+    
   }
 
   // Update a renter

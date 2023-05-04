@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Ticket, TicketManagementService } from '../ticket-management.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -17,10 +17,9 @@ export class TicketComponent {
 
   // Create a variable to store the form
   postForm = new FormGroup({
-    title: new FormControl(''),
-    description: new FormControl(''),
-    status: new FormControl(''),
-    appartement: new FormControl(''),
+    title: new FormControl('', Validators.required),
+    description: new FormControl('',Validators.required ),
+    status: new FormControl('',Validators.required),
 
   });
 
@@ -31,7 +30,7 @@ export class TicketComponent {
 
   // Get the ticket list of an apartment
   ngOnInit(){
-    console.log("flag 0");
+    console.log("flag 0", this.id);
     this.ticketManagementService.getTicketList(this.id).subscribe(
       data => {
         console.log("flag 2", data);
@@ -57,10 +56,6 @@ export class TicketComponent {
     console.log("ticket_Id", ticket_Id);
     this.route.navigate(['estimate', ticket_Id]);
   }
-  
-
-
- 
 
   //  fonction to edit a ticket of the list
   editTicket(ticket: Ticket){
@@ -68,8 +63,15 @@ export class TicketComponent {
   }
 
   // Create a ticket for an apartment
-  addTicket(ticket: Ticket){
-    this.ticketManagementService.addTicket(ticket).subscribe()
+  addTicket(){
+
+    console.log("FormGroup", this.postForm.value)
+
+    this.ticketManagementService.addTicket(this.postForm.value, this.id).subscribe(res => {
+      console.log(res);
+      window.location.reload();
+    }
+    );
   }
 
 

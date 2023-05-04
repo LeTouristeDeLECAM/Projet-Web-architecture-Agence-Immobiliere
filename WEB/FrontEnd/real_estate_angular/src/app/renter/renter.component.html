@@ -29,11 +29,12 @@ The form comport required fields : 'first_name', 'last_name', 'email' -->
                         <!-- <mat-form-field>
                             <input matInput ="appart_Id" formControlName="appart_Id"  placeholder="Appartement ID: {{id}}">
                         </mat-form-field> -->
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" type="submit" [disabled]="!postForm.valid" >Create</button>
+                        </mat-card-actions>
                     </form>
                 </mat-card-content>
-                <mat-card-actions>
-                    <button mat-raised-button color="primary" type="submit">Create</button>
-                </mat-card-actions>
+                
             </mat-card>
         </div>
     </div>

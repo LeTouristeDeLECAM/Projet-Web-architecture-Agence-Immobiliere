@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { FormGroup } from '@angular/forms';
 
 export class Appartement {
   'appart_Id': number;
@@ -35,7 +36,12 @@ export class PropertyManagementService {
 
   // add appartement without token
   public addAppartement(appartement: Appartement): Observable<any> {
-    return this.http.post<Appartement>(this.baseUrl + 'appartement', appartement, {params: new HttpParams().set('title', appartement.title ).set('description', appartement.description).set('price', appartement.price.toString()).set('surface', appartement.surface.toString()).set('nbRooms', appartement.nbRooms.toString()).set('address', appartement.address)}); 
+
+    console.log("flag 1")
+    let params= new HttpParams().set('title', appartement.title ).set('description', appartement.description).set('price', appartement.price.toString()).set('surface', appartement.surface.toString()).set('nbRooms', appartement.nbRooms.toString()).set('address', appartement.address)
+    console.log("flag 2")
+    console.log("params : ",params);
+    return this.http.post<Appartement>(this.baseUrl + 'appartement', appartement, {params: params}); 
   }
 
   // delete appartement token needed
