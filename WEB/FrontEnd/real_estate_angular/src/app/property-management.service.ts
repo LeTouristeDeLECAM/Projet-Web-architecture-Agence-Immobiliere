@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 
@@ -44,9 +44,16 @@ export class PropertyManagementService {
     return this.http.post<Appartement>(this.baseUrl + 'appartement', appartement, {params: params}); 
   }
 
-  // delete appartement token needed
+  // delete appartement token needed 
   public deleteAppartement(appartement: number): Observable<any> {
-    return this.http.delete<Appartement>(this.baseUrl + 'appartement/' + appartement);
+    const headers = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization' : `Bearer ${localStorage.getItem('token')}`
+    })
+    console.log("token : ", headers.get('Authorization'));
+    console.log("  token 2 ", localStorage.getItem('token'));
+    
+    return this.http.delete<Appartement>(this.baseUrl + 'appartement/' + appartement, {headers: headers});
   }
 
 }

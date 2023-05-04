@@ -28,7 +28,7 @@ export class EstimateComponent {
   ticket_Id = this.router.snapshot.params['id'];
 
   //Get list of estimate
-  ngOnInit() { //!!!!!!! change the number in getEstimateList to the ticket_Id of the ticket you want to see the estimate
+  ngOnInit() { 
     this.estimateManagementService.getEstimateList(this.ticket_Id).subscribe(
       data => {
         this.estimateList = data;

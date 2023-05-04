@@ -31,11 +31,11 @@ export class RenterComponent {
 
   constructor(private renterManagementService: RenterManagementService, private router: ActivatedRoute, private route: Router ) { }
   
-  id= this.router.snapshot.params['id'];
+  appart_Id= this.router.snapshot.params['id'];
 
   //Get list of renter
   ngOnInit() { 
-    this.renterManagementService.getRenterList(this.id).subscribe(
+    this.renterManagementService.getRenterList(this.appart_Id).subscribe(
       data => {
         this.renterList = data;
         console.log(this.renterList);
@@ -52,7 +52,7 @@ export class RenterComponent {
     // this.renter.email=this.postForm.email.toString;
 
     
-    this.renterManagementService.addRenter( this.postForm.value, this.id).subscribe(res => {
+    this.renterManagementService.addRenter( this.postForm.value, this.appart_Id).subscribe(res => {
       console.log(res);
       window.location.reload();
     }
@@ -61,8 +61,8 @@ export class RenterComponent {
   }
 
   // Delete a renter
-  deleteRenter(renter_Id: number) {
-    this.renterManagementService.deleteRenter(renter_Id).subscribe(res => {
+  deleteRenter() {
+    this.renterManagementService.deleteRenter(this.appart_Id).subscribe(res => {
       console.log(res);
       window.location.reload();
     }

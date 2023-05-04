@@ -4,6 +4,7 @@ import { AppartementComponent } from './appartement/appartement.component';
 import { EstimateComponent } from './estimate/estimate.component';
 import { RenterComponent } from './renter/renter.component';
 import { TicketComponent } from './ticket/ticket.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'estimate/:id', component: EstimateComponent },
   { path: 'renter/:id', component: RenterComponent },
   { path: 'ticket/:id', component: TicketComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({

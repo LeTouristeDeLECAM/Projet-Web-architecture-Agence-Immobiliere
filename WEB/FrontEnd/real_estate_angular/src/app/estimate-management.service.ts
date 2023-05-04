@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 // Create a class for the repair estimate
@@ -35,7 +35,11 @@ export class EstimateManagementService {
 
   // fonction to delete an estimate
   public deleteEstimate(estimate_Id: number): Observable<any> {
-    return this.http.delete<Estimate>(this.baseUrl + 'repair_estimate/' + estimate_Id);
+    const headers = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization' : `Bearer ${localStorage.getItem('token')}`
+    })
+    return this.http.delete<Estimate>(this.baseUrl + 'repair_estimate/' + estimate_Id, {headers: headers});
   }
   
 }

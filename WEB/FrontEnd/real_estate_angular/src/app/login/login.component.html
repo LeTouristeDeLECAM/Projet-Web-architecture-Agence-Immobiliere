@@ -1,0 +1,32 @@
+<!-- This is a login page, this page display a title real estate login 
+ This page is also composed of a form to login -->
+
+<h1>Real estate login</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Login</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <form [formGroup]="postForm" (ngSubmit)="login()" >
+                    <!-- <form > -->
+                        <mat-form-field>
+                            <input matInput ="username" formControlName="username"  placeholder="User Name">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput ="password" formControlName="password"  placeholder="Password">
+                        </mat-form-field>
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" type="submit" [disabled]="!postForm.valid">Login</button>
+                        </mat-card-actions>
+                    </form>
+                </mat-card-content>
+                
+            </mat-card>
+        </div>
+    </div>
+
+

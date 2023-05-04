@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
@@ -34,8 +34,12 @@ export class RenterManagementService {
   }
 
   // fonction to delete a renter
-  public deleteRenter(renter_Id: number): Observable<any> {
-    return this.http.delete<Renter>(this.baseUrl + 'renter/' + renter_Id);
+  public deleteRenter(appart_Id: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization' : `Bearer ${localStorage.getItem('token')}`
+    })
+    return this.http.delete<Renter>(this.baseUrl + 'appartement/' + appart_Id+'/renter', {headers: headers});
   }
 
   // fonction to update a renter

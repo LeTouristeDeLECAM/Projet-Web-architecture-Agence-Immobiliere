@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import {MatIconModule} from '@angular/material/icon';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -28,7 +29,8 @@ import {MatIconModule} from '@angular/material/icon';
     TicketComponent,
     EstimateComponent,
     RenterComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

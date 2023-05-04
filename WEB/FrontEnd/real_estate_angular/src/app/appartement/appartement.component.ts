@@ -26,10 +26,6 @@ export class AppartementComponent {
   });
 
 
-  
-  
-
-
   constructor(private propertyManagementService: PropertyManagementService, private router:Router) { }
   ngOnInit(){
     this.propertyManagementService.getAppartementList().subscribe(
@@ -50,9 +46,7 @@ export class AppartementComponent {
     this.propertyManagementService.deleteAppartement(appart_Id).subscribe((res) => {
       console.log(res);
       window.location.reload();
-
     });
-
   }
 
   // fonction to add an appartement to the list
@@ -119,20 +113,14 @@ export class AppartementComponent {
   showTicketList(appart_Id: number){
     console.log("appart_Id:", appart_Id);
     this.router.navigate(['/ticket', appart_Id]);
-    }
+  }
   
-    // fonction to show the renter of an apartment
-    showRenter (appart_Id: number){
+  // fonction to show the renter of an apartment
+  showRenter (appart_Id: number){
       console.log("appart_Id renter:", appart_Id);
       this.router.navigate(['/renter', appart_Id]);
       
-    }
-
-
-
-
-
-
+  }
 
 
 }

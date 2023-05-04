@@ -4,7 +4,7 @@ There is also a form to create a new renter for an appartement, , the form is di
 The form comport a <button></button> to create the ticket
 The form comport required fields : 'first_name', 'last_name', 'email' -->
 
-<h1>Renter list for the appartement ID : {{id}}</h1>
+<h1>Renter list for the appartement ID : {{appart_Id}}</h1>
 
 <!-- create a new renter -->
 <div class="container">
@@ -12,7 +12,7 @@ The form comport required fields : 'first_name', 'last_name', 'email' -->
         <div class="col-md-4">
             <mat-card>
                 <mat-card-header>
-                    <mat-card-title>Create a new renter for Appartement ID : {{id}}</mat-card-title>
+                    <mat-card-title>Create a new renter for Appartement ID : {{appart_Id}}</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
                     <form [formGroup]="postForm" (ngSubmit)="addRenter()" > 
@@ -53,7 +53,7 @@ The form comport required fields : 'first_name', 'last_name', 'email' -->
                     <p>Appartement ID : {{renter.appart_Id}}</p>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-raised-button color="primary" (click)="deleteRenter(renter.renter_Id)">Delete</button>
+                    <button mat-raised-button color="primary" (click)="deleteRenter()">Delete</button>
                     <button mat-raised-button color="primary" (click)="updateRenter(renter)">Update</button>
                     
                 </mat-card-actions>
