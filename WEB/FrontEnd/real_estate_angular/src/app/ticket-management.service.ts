@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams ,HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 // create a class for the ticket
@@ -42,24 +42,35 @@ export class TicketManagementService {
 
   // Create a fonction to edit a ticket
   public editTicket(ticket: Ticket): Observable<any> {
-    return this.http.put<Ticket>(this.baseUrl + 'ticket/' + ticket.ticket_Id, ticket);
+
+    const headers = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization' : `Bearer ${localStorage.getItem('token')}`
+    })
+
+    return this.http.put<Ticket>(this.baseUrl + 'ticket/' + ticket.ticket_Id, ticket, {headers: headers });
   }
 
   // Create a fonction to add a ticket
   // /appartement/{appart_Id}/ticket
   public addTicket(ticket: any, appart_Id: number): Observable<any> {
-    return this.http.post<Ticket>(this.baseUrl + 'appartement/'+appart_Id+"/ticket", ticket, {params: new HttpParams().set('title', ticket.title ).set('description', ticket.description).set('status', ticket.status).set('appart_Id', appart_Id)});
+
+    const headers = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization' : `Bearer ${localStorage.getItem('token')}`
+    })
+    
+    return this.http.post<Ticket>(this.baseUrl + 'appartement/'+appart_Id+"/ticket", ticket, {headers: headers , params: new HttpParams().set('title', ticket.title ).set('description', ticket.description).set('status', ticket.status).set('appart_Id', appart_Id)});
   }
 
   // Create a fonction to update a ticket
   public updateTicket(ticket: Ticket): Observable<any> {
-    return this.http.put<Ticket>(this.baseUrl + 'ticket/' + ticket.ticket_Id, ticket, {params: new HttpParams().set('title', ticket.title ).set('description', ticket.description).set('status', ticket.status).set('appart_Id', ticket.appart_Id)});
+
+    const headers = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization' : `Bearer ${localStorage.getItem('token')}`
+    })
+    return this.http.put<Ticket>(this.baseUrl + 'ticket/' + ticket.ticket_Id, ticket, {headers: headers , params: new HttpParams().set('title', ticket.title ).set('description', ticket.description).set('status', ticket.status).set('appart_Id', ticket.appart_Id)});
   }
-
-
-  // // Create a fonction to update the status of a ticket
-  // public updateTicketStatus(ticket: Ticket): Observable<any> {
-  //   return this.http.put<Ticket>(this.baseUrl + 'ticket/' + ticket.ticket_Id, ticket, {params: new HttpParams().set('status', ticket.status)});
-  // }
 
 }

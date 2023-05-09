@@ -19,6 +19,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import {MatIconModule} from '@angular/material/icon';
 import { LoginComponent } from './login/login.component';
+import { EditAppartementComponent } from './edit-appartement/edit-appartement.component';
+import { EditRenterComponent } from './edit-renter/edit-renter.component';
+import { EditTicketComponent } from './edit-ticket/edit-ticket.component';
 
 
 
@@ -30,7 +33,10 @@ import { LoginComponent } from './login/login.component';
     EstimateComponent,
     RenterComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    EditAppartementComponent,
+    EditRenterComponent,
+    EditTicketComponent
   ],
   imports: [
     BrowserModule,

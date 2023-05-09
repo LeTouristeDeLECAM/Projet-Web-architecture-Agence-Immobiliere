@@ -29,8 +29,14 @@ export class EstimateManagementService {
 
   // fonction add an estimate to a ticket
   public addEstimate(estimate: any, ticket_Id: number): Observable<any> {
+
+    const headers = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization' : `Bearer ${localStorage.getItem('token')}`
+    })
+
     return this.http.post<Estimate>(this.baseUrl + 'ticket/' + ticket_Id+'/repair_estimate', estimate,
-     {params: new HttpParams().set('title', estimate.title ).set('description', estimate.description).set('price', estimate.price).set('ticket_Id', ticket_Id)}); 
+     {headers: headers, params: new HttpParams().set('title', estimate.title ).set('description', estimate.description).set('price', estimate.price).set('ticket_Id', ticket_Id)}); 
   }
 
   // fonction to delete an estimate

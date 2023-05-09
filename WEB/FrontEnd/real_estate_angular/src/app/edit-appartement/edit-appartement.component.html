@@ -1,0 +1,62 @@
+<!-- this HTML file is used to edit the appartement
+     The HTML is composed of a form -->
+
+<h1>Edit Property : {{appart_Id}}</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Edit a property : {{appart_Id}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <form [formGroup]="postForm" (ngSubmit)="editAppart()"> 
+                    <!-- <form> -->
+                        <mat-form-field>
+                            <input matInput ="title" formControlName="title" name="title"  #title placeholder="Title">
+                            <!--  -->
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput ="description" formControlName="description" #description placeholder="Description">
+                            <!-- formControlName="description" -->
+                        </mat-form-field>
+                        <mat-form-field>
+                            <!-- <input matInput ="price" formControlName="price" #price placeholder="Price"> -->
+                            <!-- <input matInput type="number" formControlName="price" #price placeholder="Price"> -->
+                            <!-- input a number for the price -->
+                            <input matInput type="number" formControlName="price" #price placeholder="Price">
+
+                            <!-- formControlName="price" -->
+
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput type="number" formControlName="surface" #surface  placeholder="Surface">
+                            <!-- formControlName="surface" -->
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput type="number" formControlName="nbRooms" #nbRooms placeholder="Number of rooms">
+                            <!-- formControlName="nbRooms" -->
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput ="address" formControlName="address" #address placeholder="Address">
+                            <!-- formControlName="address" -->
+                        </mat-form-field>
+                        <mat-card-actions>
+                            <!-- <button mat-raised-button color="primary" type="submit" (click)="addAppart(title.value, description.value, price.value, surface.value, nbRooms.value, address.value)">Create</button>
+                             -->
+                            <button mat-raised-button color="primary" type="submit" [disabled]="!postForm.valid" >Create</button>
+                            
+                            
+                            
+                             
+                        </mat-card-actions>
+                    </form>
+                </mat-card-content>
+
+
+                
+            </mat-card>
+        </div>
+    </div>
+

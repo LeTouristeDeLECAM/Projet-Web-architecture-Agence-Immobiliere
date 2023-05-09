@@ -30,18 +30,34 @@ export class PropertyManagementService {
   }
 
   // edit appartement without token
-  public editAppartement(appartement: Appartement): Observable<any> {
-    return this.http.put<Appartement>(this.baseUrl + 'appartement' + appartement.appart_Id, appartement);
+  public editAppartement(appartement: any, appart_Id: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization' : `Bearer ${localStorage.getItem('token')}`
+    })
+    console.log("token : ", headers.get('Authorization'));
+    console.log("  token 2 ", localStorage.getItem('token'));
+
+    const params= new HttpParams().set('title', appartement.title ).set('description', appartement.description).set('price', appartement.price).set('surface', appartement.surface).set('nbRooms', appartement.nbRooms).set('address', appartement.address).set('appart_Id', appart_Id)
+    
+    // console.log("params : ",params);
+    // console.log("headers : ",headers);
+    return this.http.put<Appartement>(this.baseUrl + 'appartement/' + appart_Id,{ params: params,headers: headers});
   }
 
   // add appartement without token
   public addAppartement(appartement: Appartement): Observable<any> {
 
+    const headers = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization' : `Bearer ${localStorage.getItem('token')}`
+    })
+
     console.log("flag 1")
     let params= new HttpParams().set('title', appartement.title ).set('description', appartement.description).set('price', appartement.price.toString()).set('surface', appartement.surface.toString()).set('nbRooms', appartement.nbRooms.toString()).set('address', appartement.address)
     console.log("flag 2")
     console.log("params : ",params);
-    return this.http.post<Appartement>(this.baseUrl + 'appartement', appartement, {params: params}); 
+    return this.http.post<Appartement>(this.baseUrl + 'appartement', appartement, {params: params, headers: headers}); 
   }
 
   // delete appartement token needed 

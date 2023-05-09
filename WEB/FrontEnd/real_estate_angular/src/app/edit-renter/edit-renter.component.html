@@ -1,0 +1,34 @@
+
+<h1>Edit Renter ID : {{renter_Id}}</h1>
+<!-- create a new renter -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Create a new renter for Appartement ID : {{renter_Id}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <form [formGroup]="postForm" (ngSubmit)="editRenter()" > 
+                    
+                        <mat-form-field>
+                            <input matInput ="firstName" formControlName="firstName"  placeholder="First name">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput ="lastName" formControlName="lastName"  placeholder="Last name">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput ="email" formControlName="email"  placeholder="Email">
+                        </mat-form-field>
+                        <!-- <mat-form-field>
+                            <input matInput ="appart_Id" formControlName="appart_Id"  placeholder="Appartement ID: {{id}}">
+                        </mat-form-field> -->
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" type="submit" [disabled]="!postForm.valid" >Create</button>
+                        </mat-card-actions>
+                    </form>
+                </mat-card-content>
+                
+            </mat-card>
+        </div>
+    </div>

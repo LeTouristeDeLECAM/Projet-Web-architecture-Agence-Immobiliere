@@ -72,7 +72,9 @@ export class RenterComponent {
 
   // Update a renter
   updateRenter(renter: Renter) {
-    this.renterManagementService.updateRenter(renter).subscribe()
+    //this.renterManagementService.updateRenter(renter).subscribe()
+    this.route.navigate(['renter/edit', renter.renter_Id]);
+
   }
 
 

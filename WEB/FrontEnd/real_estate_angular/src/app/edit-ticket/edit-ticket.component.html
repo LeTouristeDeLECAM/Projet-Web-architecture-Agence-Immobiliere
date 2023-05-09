@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Create a new ticket for Appartement ID : {{id}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <form [formGroup]="postForm" (ngSubmit)="editTicket()" > 
+                    <!-- <form > -->
+
+                        <mat-form-field>
+                            <input matInput ="title" formControlName="title"  placeholder="Title">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput ="description" formControlName="description"  placeholder="Description">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput ="status" formControlName="status"  placeholder="Status">
+                        </mat-form-field>
+                        <!-- <mat-form-field>
+                            <input matInput ="appart_Id" formControlName="appart_Id"  placeholder="Appartement ID">
+                        </mat-form-field> -->
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" type="submit" [disabled]="!postForm.valid">Create</button>
+                        </mat-card-actions>
+                    </form>
+                </mat-card-content>
+                
+            </mat-card>
+        </div>
+    </div>
