@@ -15,9 +15,10 @@ Les spécifications du projet sont disponibles dans le dossier `documentation`
 
 
 ## Web Architecture
-    Enseignant : Mr Dekimpe 
-    N° cours : 4eiaw40
-    Crédit : 4 ECTS
+Enseignant : Mr Dekimpe 
+N° cours : 4eiaw40
+Crédit : 4 ECTS
+Descriptif des attentes du cours : https://plus.ecam.be/public/fiche/2022/4eiaw40
 
 ### Backend
 Path : `WEB\BackEnd`
@@ -34,13 +35,15 @@ Path : `WEB\FrontEnd\real_estate_angular`
 run : `ng serve`
 
 #### Ionic
+PWA
 Path : `WEB\FrontEnd\real_estate_ionic`
 run : `ionic serve` ou `ionic serve --lab`
 
 ## Mobile Application
-    Enseignant : Mr Lurkin
-    N° cours : 4eiam40
-    Crédit : 3 ECTS
+Enseignant : Mr Lurkin
+N° cours : 4eiam40
+Crédit : 3 ECTS
+Descriptif des attentes du cours : https://plus.ecam.be/public/fiche/2022/4eiam40
  
 Projet réalisé avec Flutter.
 Path : `Mobile application\real_estate`
