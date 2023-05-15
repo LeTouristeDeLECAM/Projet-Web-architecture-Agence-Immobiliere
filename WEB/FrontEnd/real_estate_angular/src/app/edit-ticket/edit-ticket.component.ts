@@ -22,10 +22,17 @@ export class EditTicketComponent {
 
   constructor(private ticketManagementService: TicketManagementService, private router: ActivatedRoute, private route: Router ) { }
 
-  id= this.router.snapshot.params['id'];
+  ticket_Id= this.router.snapshot.params['id'];
 
 
-  public editTicket(){}
+  public editTicket(){
+    this.ticketManagementService.editTicket(this.postForm.value, this.ticket_Id).subscribe(res => {
+      console.log(res);
+      this.route.navigate(['/appartement']);
+    }
+    );
+    
+  }
 
 
 }

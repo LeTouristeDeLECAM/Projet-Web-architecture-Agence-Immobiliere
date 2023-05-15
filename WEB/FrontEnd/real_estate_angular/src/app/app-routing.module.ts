@@ -7,6 +7,8 @@ import { TicketComponent } from './ticket/ticket.component';
 import { LoginComponent } from './login/login.component';
 import { EditAppartementComponent } from './edit-appartement/edit-appartement.component';
 import { EditRenterComponent } from './edit-renter/edit-renter.component';
+import { EditTicketComponent } from './edit-ticket/edit-ticket.component';
+
 
 
 const routes: Routes = [
@@ -17,6 +19,10 @@ const routes: Routes = [
   { path: 'ticket/:id', component: TicketComponent },
   { path: 'login', component: LoginComponent },
   { path: 'renter/edit/:id', component: EditRenterComponent },
+  { path: 'ticket/edit/:id', component: EditTicketComponent },
+
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+
 ];
 
 @NgModule({

@@ -1,7 +1,0 @@
-{
-  "name": "real_estate",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular-standalone"
-}

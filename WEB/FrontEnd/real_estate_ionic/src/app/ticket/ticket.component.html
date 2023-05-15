@@ -1,0 +1,42 @@
+<ion-content>
+  <!-- create a new ticket -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Create a new ticket for Appartement ID: {{id}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="postForm" (ngSubmit)="addTicket()">
+        <ion-item>
+          <ion-label>Title</ion-label>
+          <ion-input type="text" formControlName="title" placeholder="Title"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Description</ion-label>
+          <ion-input type="text" formControlName="description" placeholder="Description"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Status</ion-label>
+          <ion-input type="text" formControlName="status" placeholder="Status"></ion-input>
+        </ion-item>
+        <ion-button color="primary" expand="block" type="submit" [disabled]="!postForm.valid">Create</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+  <!-- list all tickets -->
+
+  <ion-card *ngFor="let ticket of ticketList">
+    <ion-card-header>
+      <ion-card-title>{{ticket.title}}</ion-card-title>
+      <ion-card-subtitle>Ticket ID: {{ticket.ticket_Id}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Description: {{ticket.description}}</p>
+      <p>Status: {{ticket.status}}</p>
+      <p>Appartement ID: {{ticket.appart_Id}}</p>
+    </ion-card-content>
+    <ion-card>
+      <ion-button color="primary" (click)="editTicket(ticket)">Edit</ion-button>
+      <ion-button color="primary" (click)="goToEstimate(ticket.ticket_Id)">Estimates</ion-button>
+    </ion-card>
+  </ion-card>
+</ion-content>

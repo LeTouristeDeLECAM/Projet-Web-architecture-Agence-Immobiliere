@@ -1,0 +1,41 @@
+<!-- this HTML file is used to edit the appartement
+     The HTML is composed of a form -->
+
+<!-- <h1>Edit Property : {{appart_Id}}</h1> -->
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Edit Property: {{appart_Id}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="postForm" (ngSubmit)="editAppart()">
+        <ion-item>
+          <ion-label>Title</ion-label>
+          <ion-input formControlName="title" name="title" #title placeholder="Title"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Description</ion-label>
+          <ion-input formControlName="description" #description placeholder="Description"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Price</ion-label>
+          <ion-input type="number" formControlName="price" #price placeholder="Price"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Surface</ion-label>
+          <ion-input type="number" formControlName="surface" #surface placeholder="Surface"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Number of Rooms</ion-label>
+          <ion-input type="number" formControlName="nbRooms" #nbRooms placeholder="Number of rooms"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Address</ion-label>
+          <ion-input formControlName="address" #address placeholder="Address"></ion-input>
+        </ion-item>
+        <ion-button color="primary" expand="block" type="submit" [disabled]="!postForm.valid">Create</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

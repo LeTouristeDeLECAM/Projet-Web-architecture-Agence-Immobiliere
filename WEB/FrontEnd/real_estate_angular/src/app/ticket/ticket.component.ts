@@ -58,8 +58,9 @@ export class TicketComponent {
   }
 
   //  fonction to edit a ticket of the list
-  editTicket(ticket: Ticket){
-    this.ticketManagementService.editTicket( ticket).subscribe( )
+  editTicket(ticket_Id: number){
+    // this.ticketManagementService.editTicket( ticket).subscribe( )
+    this.route.navigate(['ticket/edit/', ticket_Id]);
   }
 
   // Create a ticket for an apartment

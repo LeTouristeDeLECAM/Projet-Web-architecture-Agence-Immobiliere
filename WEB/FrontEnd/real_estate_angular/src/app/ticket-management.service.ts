@@ -41,14 +41,15 @@ export class TicketManagementService {
 
 
   // Create a fonction to edit a ticket
-  public editTicket(ticket: Ticket): Observable<any> {
+  public editTicket(ticket: any,ticket_Id: number): Observable<any> {
 
     const headers = new HttpHeaders({
       'Content-Type' : 'application/json',
       'Authorization' : `Bearer ${localStorage.getItem('token')}`
     })
 
-    return this.http.put<Ticket>(this.baseUrl + 'ticket/' + ticket.ticket_Id, ticket, {headers: headers });
+    const params = new HttpParams().set('title', ticket.title ).set('description', ticket.description).set('status', ticket.status);
+    return this.http.put<Ticket>(this.baseUrl + 'ticket/' + ticket_Id, ticket, {headers: headers, params: params});
   }
 
   // Create a fonction to add a ticket

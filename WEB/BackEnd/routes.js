@@ -44,7 +44,7 @@ router.post('/appartement', isAuthorized,appartement_controller.createAppartemen
 // GET request for one Appartement.
 router.get('/appartement/:appart_Id', appartement_controller.findAppartementById);
 // update appartement
-router.put('/appartement/:appart_Id', isAuthorized, appartement_controller.updateAppartement);
+router.put('/appartement/:appart_Id',isAuthorized, appartement_controller.updateAppartement);
 // delete appartement
 router.delete('/appartement/:appart_Id',isAuthorized,  appartement_controller.deleteAppartement);
 
@@ -57,6 +57,7 @@ router.post('/appartement/:appart_Id/renter', isAuthorized,renterController.rent
 
 // PUT request to update the renter of an appartement.
 router.put('/appartement/:appart_Id/renter', isAuthorized,renterController.renterUpdate);
+// router.put('/appartement/:appart_Id/renter',renterController.renterUpdate);
 
 // DELETE request to delete the renter of an appartement.
 router.delete('/appartement/:appart_Id/renter',isAuthorized, renterController.renterDelete);

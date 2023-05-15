@@ -1,0 +1,93 @@
+<!-- <h1>Property list</h1> -->
+
+<ion-content>
+  <!-- Search bar to get a ticket by its id -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Search a ticket of an apartment</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-input type="text" formControlName="ticket_Id"  placeholder="Ticket Id"></ion-input>
+      </ion-item>
+      <ion-button color="primary" expand="block" (click)="getTicketById()" [disabled]="!searchForm.valid">Search</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+
+  
+<!-- 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Search a ticket of an apartment</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="getTicketById()">
+        <ion-item>
+          <ion-input type="text" formControlName="ticket_Id" #ticket_Id placeholder="Ticket Id"></ion-input>
+        </ion-item>
+        <ion-button color="primary" expand="block" type="submit" [disabled]="!searchForm.valid">Search</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>  -->
+
+
+
+<!-- create a new apartment -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Create a new property</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="postForm" (ngSubmit)="addAppart()">
+        <ion-item>
+          <ion-label>Title</ion-label>
+          <ion-input type="text" formControlName="title"  placeholder="Title"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Description</ion-label>
+          <ion-input type="text" formControlName="description"  placeholder="Description"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Price</ion-label>
+          <ion-input type="number" formControlName="price"  placeholder="Price"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Surface</ion-label>
+          <ion-input type="number" formControlName="surface"  placeholder="Surface"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Number of rooms</ion-label>
+          <ion-input type="number" formControlName="nbRooms"  placeholder="Number of rooms"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Address</ion-label>
+          <ion-input type="text" formControlName="address"  placeholder="Address"></ion-input>
+        </ion-item>
+        <ion-button color="primary" expand="block" type="submit" [disabled]="!postForm.valid">Create</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card> 
+
+
+<!-- list all apartments -->
+
+  <ion-card *ngFor="let appart of appartementList">
+  <ion-card-header>
+    <ion-card-title>{{appart.title}}</ion-card-title>
+    <ion-card-subtitle>{{appart.description}}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <p>Price : {{appart.price}} €</p>
+    <p>Surface : {{appart.surface}} m^2</p>
+    <p>Number of rooms : {{appart.nbRooms}}</p>
+    <p>Address : {{appart.address}}</p>
+  </ion-card-content>
+  <ion-card>
+    <ion-button (click)="editAppart(appart.appart_Id)">Edit</ion-button>
+    <ion-button (click)="deleteAppart(appart.appart_Id)">Delete</ion-button>
+    <ion-button (click)="showTicketList(appart.appart_Id)">Tickets</ion-button>
+    <ion-button (click)="showRenter(appart.appart_Id)">Renter</ion-button>
+  </ion-card>
+  </ion-card>
+</ion-content>

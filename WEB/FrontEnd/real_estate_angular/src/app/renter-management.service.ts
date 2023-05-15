@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { __param } from 'tslib';
 
 
 // Create a class for the renter
@@ -49,15 +50,17 @@ export class RenterManagementService {
   }
 
   // fonction to update a renter
-  public editRenter(renter: any, renter_Id: number ): Observable<any> {
+  public editRenter(renter: any, appart_Id: number, renter_Id?: number ): Observable<any> {
 
     const headers = new HttpHeaders({
       'Content-Type' : 'application/json',
       'Authorization' : `Bearer ${localStorage.getItem('token')}`
     })
-    
-    return this.http.put<Renter>(this.baseUrl + 'renter/' + renter_Id, renter,
-     {headers: headers , params: new HttpParams().set('firstName', renter.firstName ).set('lastName', renter.lastName).set('email', renter.email).set('appart_Id', renter.appart_Id)}); 
+
+    let params =  new HttpParams().set('firstName', renter.firstName ).set('lastName', renter.lastName).set('email', renter.email);
+    console.log("params : ",params);
+    return this.http.put<Renter>(this.baseUrl + 'appartement/' + appart_Id+"/renter", renter,{headers: headers ,params: params} );
+    //return this.http.put<Appartement>(this.baseUrl + 'appartement/'+appart_Id , appartement,{ params: params,headers: headers}); 
   }
 
 

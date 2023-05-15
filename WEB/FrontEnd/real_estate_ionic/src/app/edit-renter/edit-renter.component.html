@@ -1,0 +1,28 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Create a new renter for Appartement ID: {{renter_Id}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="postForm" (ngSubmit)="editRenter()">
+        <ion-item>
+          <ion-label>First Name</ion-label>
+          <ion-input formControlName="firstName" placeholder="First name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Last Name</ion-label>
+          <ion-input formControlName="lastName" placeholder="Last name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-input formControlName="email" placeholder="Email"></ion-input>
+        </ion-item>
+        <!-- <ion-item>
+          <ion-label>Appartement ID: {{id}}</ion-label>
+          <ion-input formControlName="appart_Id" placeholder="Appartement ID: {{id}}"></ion-input>
+        </ion-item> -->
+        <ion-button color="primary" expand="block" type="submit" [disabled]="!postForm.valid">Create</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

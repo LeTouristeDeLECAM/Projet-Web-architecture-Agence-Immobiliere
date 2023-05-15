@@ -19,14 +19,26 @@ export class EditRenterComponent {
 
   constructor(private renterManagementService: RenterManagementService, private router: ActivatedRoute, private route: Router ) { }
   
-  renter_Id= this.router.snapshot.params['id'];
+  appart_Id= this.router.snapshot.params['id'];
 
   public editRenter(){
-    this.renterManagementService.editRenter(this.postForm.value, this.renter_Id).subscribe(res => {
-      console.log(res);
-      this.route.navigate(['/renter']);
+    // this.renterManagementService.getRenterList(this.appart_Id).subscribe( res => {
+    //   console.log("response :  ",res);
+    //   console.log("response renter Id :  ",res.renter_Id);
+
+    //   this.renterManagementService.editRenter(this.postForm.value, this.appart_Id, res.renter_Id).subscribe(res2 => {
+    //     console.log(res2);
+    //     this.route.navigate(['/renter', this.appart_Id]);
+    //   }
+    //   );
+    // });
+
+    this.renterManagementService.editRenter(this.postForm.value, this.appart_Id).subscribe(res2 => {
+      console.log(res2);
+      this.route.navigate(['/renter', this.appart_Id]);
     }
     );
+    
   }
 
 

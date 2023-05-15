@@ -1,0 +1,41 @@
+<ion-content>
+  <!-- create a new renter -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Create a new renter for Appartement ID: {{appart_Id}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="postForm" (ngSubmit)="addRenter()">
+        <ion-item>
+          <ion-label>First name</ion-label>
+          <ion-input type="text" formControlName="firstName" placeholder="First name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Last name</ion-label>
+          <ion-input type="text" formControlName="lastName" placeholder="Last name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+        </ion-item>
+        <ion-button color="primary" expand="block" type="submit" [disabled]="!postForm.valid">Create</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+  <!-- list all renters -->
+
+  <ion-card *ngFor="let renter of renterList">
+    <ion-card-header>
+      <ion-card-title>{{renter.firstName}} {{renter.lastName}}</ion-card-title>
+      <ion-card-subtitle>Renter ID: {{renter.renter_Id}}</ion-card-subtitle>
+    </ion-card-header>
+  <ion-card-content>
+    <p>Email: {{renter.email}}</p>
+    <p>Appartement ID: {{renter.appart_Id}}</p>
+  </ion-card-content>
+  <ion-card>
+    <ion-button color="primary" (click)="deleteRenter()">Delete</ion-button>
+    <ion-button color="primary" (click)="updateRenter(renter)">Update</ion-button>
+  </ion-card>
+  </ion-card>
+</ion-content>

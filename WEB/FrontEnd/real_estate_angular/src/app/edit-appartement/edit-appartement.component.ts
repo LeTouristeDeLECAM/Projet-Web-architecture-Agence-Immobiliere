@@ -31,7 +31,7 @@ export class EditAppartementComponent {
   editAppart(){
     console.log(this.postForm.value);
 
-    this.PropertyManagementService.editAppartement( this.postForm , this.appart_Id).subscribe(res => {
+    this.PropertyManagementService.editAppartement( this.postForm.value , this.appart_Id).subscribe(res => {
       console.log(res);
       this.route.navigate(['/appartement']);
     })

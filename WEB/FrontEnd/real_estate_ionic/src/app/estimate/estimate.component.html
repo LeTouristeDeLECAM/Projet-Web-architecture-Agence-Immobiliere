@@ -1,0 +1,41 @@
+<ion-content>
+  <h1>Estimate list for the ticket ID: {{ticket_Id}}</h1>
+  <!-- create a new estimate -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Create a new estimate for Ticket ID: {{ticket_Id}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="postForm" (ngSubmit)="addEstimate()">
+        <ion-item>
+          <ion-label>Title</ion-label>
+          <ion-input type="text" formControlName="title" placeholder="Title"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Description</ion-label>
+          <ion-input type="text" formControlName="description" placeholder="Description"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Price</ion-label>
+          <ion-input type="number" formControlName="price" placeholder="Price"></ion-input>
+        </ion-item>
+        <ion-button color="primary" expand="block" type="submit" [disabled]="!postForm.valid">Create</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+  <!-- list all estimates -->
+
+  <ion-card *ngFor="let estimate of estimateList">
+    <ion-card-header>
+      <ion-card-title>{{estimate.title}}</ion-card-title>
+      <ion-card-subtitle>{{estimate.description}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Price: {{estimate.price}}</p>
+      <p>Ticket ID: {{estimate.ticket_Id}}</p>
+    </ion-card-content>
+    <ion-card>
+      <ion-button color="primary" (click)="deleteEstimate(estimate.estimate_Id)">Delete</ion-button>
+    </ion-card>
+  </ion-card>
+</ion-content>

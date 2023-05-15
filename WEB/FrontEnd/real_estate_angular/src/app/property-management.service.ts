@@ -40,9 +40,9 @@ export class PropertyManagementService {
 
     const params= new HttpParams().set('title', appartement.title ).set('description', appartement.description).set('price', appartement.price).set('surface', appartement.surface).set('nbRooms', appartement.nbRooms).set('address', appartement.address).set('appart_Id', appart_Id)
     
-    // console.log("params : ",params);
+    console.log("params : ",params);
     // console.log("headers : ",headers);
-    return this.http.put<Appartement>(this.baseUrl + 'appartement/' + appart_Id,{ params: params,headers: headers});
+    return this.http.put<Appartement>(this.baseUrl + 'appartement/'+appart_Id , appartement,{ params: params,headers: headers});
   }
 
   // add appartement without token
