@@ -15,9 +15,9 @@ Les spécifications du projet sont disponibles dans le dossier `documentation`
 
 
 ## Web Architecture
-Enseignant : Mr Dekimpe 
-N° cours : 4eiaw40
-Crédit : 4 ECTS
+Enseignant : Mr Dekimpe \n 
+N° cours : 4eiaw40 \n
+Crédit : 4 ECTS \n
 Descriptif des attentes du cours : https://plus.ecam.be/public/fiche/2022/4eiaw40
 
 ### Backend
