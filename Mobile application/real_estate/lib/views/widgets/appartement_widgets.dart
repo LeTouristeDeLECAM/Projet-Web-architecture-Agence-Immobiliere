@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Appartement extends StatelessWidget{
+class AppartementCard extends StatelessWidget{
   final String title;
   final String description;
   final String price;
@@ -9,7 +9,7 @@ class Appartement extends StatelessWidget{
   final String address;
 
 
-  const Appartement({
+  const AppartementCard({
     Key? key,
     required this.title,
     required this.description,
@@ -23,16 +23,17 @@ class Appartement extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(12.0),
       child: Card(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
               leading: const Icon(Icons.house),
               title: Text(title),
               subtitle: Text(description),
             ),
-            Image.network('../Logo_ECAM.jpg'), // i don't know if it's work
+            
             Row(
               children: <Widget>[
                 Text('Price: '),
