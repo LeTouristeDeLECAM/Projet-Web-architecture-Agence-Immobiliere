@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 
 class AppartementCard extends StatelessWidget{
+  final int appart_Id;
   final String title;
   final String description;
-  final String price;
-  final String surface;
-  final String nbRooms;
+  final int price;
+  final int surface;
+  final int nbRooms;
   final String address;
 
 
   const AppartementCard({
     Key? key,
+    required this.appart_Id,
     required this.title,
     required this.description,
     required this.price,
@@ -37,19 +39,19 @@ class AppartementCard extends StatelessWidget{
             Row(
               children: <Widget>[
                 Text('Price: '),
-                Text(price),
+                Text(price.toString()),
               ],
             ),
             Row(
               children: <Widget>[
                 Text('Surface: '),
-                Text(surface),
+                Text(surface.toString()),
               ],
             ),
             Row(
               children: <Widget>[
                 Text('Rooms: '),
-                Text(nbRooms),
+                Text(nbRooms.toString()),
               ],
             ),
             
@@ -58,7 +60,37 @@ class AppartementCard extends StatelessWidget{
                 Text('Address: '),
                 Text(address),
               ],
-            )
+            ),
+
+            Row(
+              children: <Widget>[
+                Text('Appartement ID: '),
+                Text(appart_Id.toString()),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                TextButton(
+                  child: const Text('Tickets'),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/tickets/$appart_Id');
+                  },
+                ),
+                const SizedBox(width: 8),
+                TextButton(
+                  child: const Text('Edit'),
+                  onPressed: () {/* ... */},
+                ),
+                const SizedBox(width: 8),
+                TextButton(
+                  child: const Text('Delete'),
+                  onPressed: () {/* ... */},
+                ),
+                const SizedBox(width: 8),
+                
+              ],
+            ),
           ],
         ),
       ),

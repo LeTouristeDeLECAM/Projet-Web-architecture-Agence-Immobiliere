@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:real_estate/views/widgets/appartement_widgets.dart';
 import 'package:real_estate/models/appartement.dart';
 import 'package:real_estate/models/appartement.api.dart';
+import 'dart:developer';
+
 
 
 class HomePage extends StatefulWidget {
@@ -16,12 +18,22 @@ class _HomePageState extends State<HomePage> {
   List<Appartement> appartements = [];
   bool _isLoading = true;
 
-  Future getAppartements() async {
+  @override
+  void initState() {
+    super.initState();
+    getAppartements();
+  }
+
+
+
+  Future<void> getAppartements() async {
     appartements = await AppartementApi.getAppartements();
     setState(() {
       _isLoading = false;
     });
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +51,61 @@ class _HomePageState extends State<HomePage> {
         
       ),
       ),
+      
+
+      
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     getAppartements();
+      //   },
+      //   child: Icon(Icons.refresh),
+      // ),
+
+      // Add a list of appartements to the widget
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     // addAppartement();
+      //     Navigator.pushNamed(context, '/addAppartement');
+
+      //   },
+      //   child: Icon(Icons.add),
+      // ),
+
+      // buttons to serch for appartement and login
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/searchAppartement');
+              },
+              icon: Icon(Icons.search),
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/login');
+              },
+              icon: Icon(Icons.login),
+            ),
+            IconButton(onPressed: () {
+              Navigator.pushNamed(context, '/addAppartement');
+            }, icon: Icon(Icons.add)),
+
+            // refresh button
+            IconButton(onPressed: () {
+              getAppartements();
+            }, icon: Icon(Icons.refresh)),
+          ],
+        ),
+      ),
+
+
       body: _isLoading ? Center(child: CircularProgressIndicator(),) : ListView.builder(
         itemCount: appartements.length,
         itemBuilder: (context, index) {
           return AppartementCard(
+            appart_Id: appartements[index].appart_Id,
             title: appartements[index].title,
             description: appartements[index].description,
             price: appartements[index].price,

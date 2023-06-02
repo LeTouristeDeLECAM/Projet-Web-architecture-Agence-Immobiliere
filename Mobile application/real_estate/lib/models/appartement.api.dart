@@ -1,4 +1,5 @@
 import 'dart:convert';
+// import 'dart:html';
 import 'package:real_estate/models/appartement.dart';
 import 'package:http/http.dart' as http;
 
@@ -12,6 +13,8 @@ class AppartementApi {
     List<Appartement> appartements = [];
     if (response.statusCode == 200) {
       var body = jsonDecode(response.body);
+      
+      // print (body);
       for (var item in body) {
         appartements.add(Appartement.fromJson(item));
       }
