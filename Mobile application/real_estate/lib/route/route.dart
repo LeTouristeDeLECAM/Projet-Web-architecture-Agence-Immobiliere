@@ -23,7 +23,18 @@ const String searchTicketRoute = '/searchTicket/$id';
 
 Route<dynamic> controller(RouteSettings settings) {
 
-  final args = settings.arguments;
+  // final Object id = settings.arguments;
+  final id = settings.arguments.toString();
+
+
+
+  // convert id into a int
+  // var id2 = int.parse('$id');
+  
+
+  print ('The argument id in route file is :$id');
+  
+
 
   switch (settings.name) {
     case homePage:
