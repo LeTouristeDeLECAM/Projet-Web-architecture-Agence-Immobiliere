@@ -11,13 +11,13 @@ import 'package:real_estate/route/route.dart'as route  ;
 
 class TicketPage extends StatefulWidget {
   @override
-  _TicketPageState createState() => _TicketPageState(id: null);
+  _TicketPageState createState() => _TicketPageState();
 }
 
 class _TicketPageState extends State<TicketPage> {
 
-  final int id ; 
-  _TicketPageState({required this.id});
+  // final int id ; 
+  // _TicketPageState({required this.id});
 
   
 
@@ -38,7 +38,7 @@ class _TicketPageState extends State<TicketPage> {
 
 
   Future<void> getTickets() async {
-    tickets = await TicketApi.getTickets(id);
+    tickets = await TicketApi.getTickets(2);
     setState(() {
       _isLoading = false;
     });

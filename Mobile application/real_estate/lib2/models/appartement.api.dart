@@ -52,6 +52,6 @@ class AppartementApi {
   //   return false;
   // }
 
-  
+
   
 }

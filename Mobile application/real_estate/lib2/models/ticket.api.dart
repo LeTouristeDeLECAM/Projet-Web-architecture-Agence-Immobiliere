@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:real_estate/models/ticket_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -14,11 +15,12 @@ class TicketApi {
   // static Future<List<Ticket>> getTickets(int id) async {
 
 
-  // get ticket list from the api using the id of the appartement
-  static Future<List<Ticket>> getTickets(int id) async {
+  // get ticket list from the api using the id of the appartement int id
+  static Future<List<Ticket>> getTickets(int id ) async {
     // var url = Uri.parse('http://localhost:3000/appartement/'+id.toString()+'ticket');
 
     // 
+    
     var url = Uri.parse('http://localhost:3000/appartement/'+id.toString()+'/ticket');
     var response = await http.get(url);
     List<Ticket> ticket = [];
@@ -33,7 +35,7 @@ class TicketApi {
     return ticket;
   }
 
-  // Get a ticket from the api using the id of the ticket
+  // // Get a ticket from the api using the id of the ticket
   // static Future<Ticket> getTicket(int id) async {
   //   var url = Uri.parse('http://localhost:3000/ticket/$id');
   //   var response = await http.get(url);

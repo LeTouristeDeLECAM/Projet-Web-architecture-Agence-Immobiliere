@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:real_estate/views/home.dart';
@@ -5,6 +7,7 @@ import 'package:real_estate/views/ticket.dart';
 import 'package:real_estate/views/login.dart';
 import 'package:real_estate/views/addAppart.dart';
 import 'package:real_estate/views/editAppart.dart';
+
 
 
 
@@ -22,14 +25,19 @@ const String searchTicketRoute = '/searchTicket/$id';
 // Controller for the routes
 
 Route<dynamic> controller(RouteSettings settings) {
-
-  final args = settings.arguments;
+  // transform the arguments to int
+  final int id = int.parse(settings.arguments.toString());
+  final args = settings.arguments.toString();
+  print ('route');
+  print(args);
+  log(args.toString());
 
   switch (settings.name) {
     case homePage:
       return MaterialPageRoute(builder: (context) => HomePage());
-    case ticketRoute:
-      return MaterialPageRoute(builder: (context) => TicketPage());
+    // case ticketRoute:
+    //   // return MaterialPageRoute(builder: (context) => TicketPage( args: id));
+    //   return MaterialPageRoute(builder: (context) => TicketPage( ));
     case loginRoute:
       return MaterialPageRoute(builder: (context) => LoginPage());
     // case addAppartementRoute:
