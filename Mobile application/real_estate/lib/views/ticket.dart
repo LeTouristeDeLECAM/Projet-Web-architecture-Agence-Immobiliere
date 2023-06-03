@@ -10,6 +10,9 @@ import 'dart:developer';
 import 'package:real_estate/route/route.dart'as route  ;
 
 class TicketPage extends StatefulWidget {
+  final String id;
+  const TicketPage({Key? key, required this.id}) : super(key: key);
+  
   @override
   _TicketPageState createState() => _TicketPageState();
 }
@@ -38,7 +41,8 @@ class _TicketPageState extends State<TicketPage> {
 
 
   Future<void> getTickets() async {
-    tickets = await TicketApi.getTickets(2);
+    print ('The argument id in ticket file is :${widget.id}');
+    tickets = await TicketApi.getTickets(int.parse(widget.id));
     setState(() {
       _isLoading = false;
     });
