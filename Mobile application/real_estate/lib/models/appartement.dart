@@ -1,6 +1,8 @@
 // In this file, we define the Appartement class
 // based on the API https://app.swaggerhub.com/apis/LeTouristeDeLECAM/Agence_Immobiliere/1.0
 
+import 'dart:js';
+
 class Appartement {
   final int appart_Id;
   final String title;
@@ -42,6 +44,28 @@ static List<Appartement> appartementsFromSnapshot(List snapshot) {
 @override
   String toString() {
     return 'Appartement{appart_Id: $appart_Id, title: $title, description: $description, price: $price, surface: $surface, nbRooms: $nbRooms, address: $address}';
+  }
+
+  JsObject toJson() {
+    return JsObject.jsify({
+      'appart_Id': appart_Id,
+      'title': title,
+      'description': description,
+      'price': price,
+      'surface': surface,
+      'nbRooms': nbRooms,
+      'address': address,
+    });
+
+    // return {
+    //   'appart_Id': appart_Id,
+    //   'title': title,
+    //   'description': description,
+    //   'price': price,
+    //   'surface': surface,
+    //   'nbRooms': nbRooms,
+    //   'address': address,
+    // };
   }
 
 }

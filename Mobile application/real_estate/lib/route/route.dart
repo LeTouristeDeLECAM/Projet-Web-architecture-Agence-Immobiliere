@@ -5,6 +5,7 @@ import 'package:real_estate/views/ticket.dart';
 import 'package:real_estate/views/login.dart';
 import 'package:real_estate/views/addAppart.dart';
 import 'package:real_estate/views/editAppart.dart';
+import 'package:real_estate/models/appartement.dart';
 
 
 
@@ -43,10 +44,25 @@ Route<dynamic> controller(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => TicketPage(id: id,));
     case loginRoute:
       return MaterialPageRoute(builder: (context) => LoginPage());
-    // case addAppartementRoute:
-    //   return MaterialPageRoute(builder: (context) => AddAppartementPage());
-    // case editAppartementRoute:
-    //   return MaterialPageRoute(builder: (context) => EditAppartementPage());
+    case addAppartementRoute:
+      return MaterialPageRoute(builder: (context) => AddAppartementPage());
+    case editAppartementRoute:
+      final Appartement appartement = {
+
+        'appart_Id': id,
+        'title': 'title',
+        'description': 'description',
+        'price': 100,
+        'surface': 100,
+        'nbRooms': 100,
+        'address': 'address',
+        'image': 'image',
+        'createdAt': 'createdAt',
+        'updatedAt': 'updatedAt',
+        'userId': 'userId',
+      } as Appartement;
+
+      return MaterialPageRoute(builder: (context) => EditAppartementPage(appartement:appartement , ));
     default:
       throw ('Route not found');
   }
