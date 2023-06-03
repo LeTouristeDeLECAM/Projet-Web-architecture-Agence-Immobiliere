@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:real_estate/route/route.dart'as route  ;
+import 'package:real_estate/models/appartement.api.dart';
+
 
 class AppartementCard extends StatelessWidget{
   final int appart_Id;
@@ -74,18 +77,24 @@ class AppartementCard extends StatelessWidget{
                 TextButton(
                   child: const Text('Tickets'),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/tickets/$appart_Id');
+                    // Navigator.pushNamed(context, '/ticket/$appart_Id');
+                    Navigator.pushNamed(context, route.ticketRoute, arguments: appart_Id);
                   },
                 ),
                 const SizedBox(width: 8),
                 TextButton(
                   child: const Text('Edit'),
-                  onPressed: () {/* ... */},
+                  onPressed: () {
+                    Navigator.pushNamed(context, route.editAppartementRoute, arguments: appart_Id);
+                  },
                 ),
                 const SizedBox(width: 8),
                 TextButton(
                   child: const Text('Delete'),
-                  onPressed: () {/* ... */},
+                  onPressed: () {
+                    AppartementApi.deleteAppartement(appart_Id);
+                    Navigator.pushNamed(context, route.homePage);
+                  },
                 ),
                 const SizedBox(width: 8),
                 

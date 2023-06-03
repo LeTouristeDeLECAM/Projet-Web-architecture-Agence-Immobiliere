@@ -21,4 +21,15 @@ class AppartementApi {
     }
     return appartements;
   }
+
+  // Delete an appartement
+  static Future<bool> deleteAppartement(int id) async {
+    var url = Uri.parse('http://localhost:3000/appartement/$id');
+    var response = await http.delete(url);
+    if (response.statusCode == 200) {
+      return true;
+    }
+    return false;
+  }
+  
 }

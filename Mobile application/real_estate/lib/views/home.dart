@@ -6,6 +6,7 @@ import 'package:real_estate/models/appartement.dart';
 import 'package:real_estate/models/appartement.api.dart';
 import 'dart:developer';
 
+import 'package:real_estate/route/route.dart'as route  ;	
 
 
 class HomePage extends StatefulWidget {
@@ -76,25 +77,30 @@ class _HomePageState extends State<HomePage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
+
+            // search ticket button
             IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/searchAppartement');
+                Navigator.pushNamed(context, route.searchTicketRoute , arguments: {'id': 1});
               },
               icon: Icon(Icons.search),
             ),
+
+            // login button
             IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/login');
+                Navigator.pushNamed(context, route.loginRoute);
               },
               icon: Icon(Icons.login),
             ),
+            // add appartement button
             IconButton(onPressed: () {
-              Navigator.pushNamed(context, '/addAppartement');
+              Navigator.pushNamed(context, route.addAppartementRoute);
             }, icon: Icon(Icons.add)),
 
             // refresh button
             IconButton(onPressed: () {
-              getAppartements();
+              Navigator.pushNamed(context, '/');
             }, icon: Icon(Icons.refresh)),
           ],
         ),

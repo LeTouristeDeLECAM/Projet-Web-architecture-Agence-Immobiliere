@@ -2,18 +2,20 @@ import 'package:flutter/material.dart';
 
 class TicketCard extends StatelessWidget{
   final int ticket_Id;
+  final int appart_Id;
   final String title;
   final String description;
   final String status;
-  final int appartementId;
+  
 
   const TicketCard({
     Key? key,
     required this.ticket_Id,
+    required this.appart_Id,
     required this.title,
     required this.description,
     required this.status,
-    required this.appartementId
+    
 
   }) : super(key: key);
 
@@ -26,7 +28,7 @@ class TicketCard extends StatelessWidget{
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
-              leading: const Icon(Icons.house),
+              leading: const Icon(Icons.warning),
               title: Text(title),
               subtitle: Text(description),
             ),
@@ -40,7 +42,7 @@ class TicketCard extends StatelessWidget{
             Row(
               children: <Widget>[
                 Text('Appartement: '),
-                Text(appartementId.toString()),
+                Text(appart_Id.toString()),
               ],
             ),
             

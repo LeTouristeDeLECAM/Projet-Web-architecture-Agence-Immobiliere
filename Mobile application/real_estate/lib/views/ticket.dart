@@ -3,9 +3,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:real_estate/views/widgets/ticket_widgets.dart';
-import 'package:real_estate/models/ticket.dart';
+import 'package:real_estate/models/ticket_model.dart';
 import 'package:real_estate/models/ticket.api.dart';
 import 'dart:developer';
+
+import 'package:real_estate/route/route.dart'as route  ;
 
 class TicketPage extends StatefulWidget {
   @override
@@ -16,6 +18,7 @@ class _TicketPageState extends State<TicketPage> {
 
   List<Ticket> tickets = [];
   bool _isLoading = true;
+  // get id 
 
   @override
   void initState() {
@@ -23,10 +26,14 @@ class _TicketPageState extends State<TicketPage> {
     getTickets();
   }
 
+ // get the arguments from the route
+  // final Map arguments = ModalRoute.of(context).settings.arguments as Map;
+  // final int id = arguments['id'];
+
 
 
   Future<void> getTickets() async {
-    tickets = await TicketApi.getTickets();
+    tickets = await TicketApi.getTickets(id);
     setState(() {
       _isLoading = false;
     });
@@ -56,17 +63,28 @@ class _TicketPageState extends State<TicketPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
+            // Search page
             IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/searchAppartement');
+                Navigator.pushNamed(context, route.searchTicketRoute);
               },
               icon: Icon(Icons.search),
             ),
+            // Login page
             IconButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/login');
               },
               icon: Icon(Icons.login),
+            ),
+
+            // homme page
+  
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/');
+              },
+              icon: Icon(Icons.home),
             ),
             ],
         ),
@@ -79,10 +97,11 @@ class _TicketPageState extends State<TicketPage> {
         itemBuilder: (context, index) {
           return TicketCard(
             ticket_Id: tickets[index].ticket_Id,
+            appart_Id: tickets[index].appart_Id,
             title: tickets[index].title,
             description: tickets[index].description,
             status: tickets[index].status,
-            appartementId: tickets[index].appartementId,
+            
             
           );
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate/views/home.dart';
 import 'package:real_estate/views/ticket.dart';
+import 'route/route.dart'as route  ;
+
 
 void main() {
   runApp(const MyApp());
@@ -19,8 +21,13 @@ class MyApp extends StatelessWidget {
       
         primarySwatch: Colors.yellow,
       ),
-      home: HomePage(),
-      // home : TicketPage(),
+    
+     
+
+      onGenerateRoute: route.controller,
+      // initialRoute: route.loginRoute,
+      initialRoute: route.homePage,
+
 
     );
   }

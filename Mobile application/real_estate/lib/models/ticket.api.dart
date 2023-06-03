@@ -1,15 +1,24 @@
 import 'dart:convert';
-import 'package:real_estate/models/ticket.dart';
+import 'package:real_estate/models/ticket_model.dart';
 import 'package:http/http.dart' as http;
+
+import 'package:real_estate/route/route.dart' as route;
 
 
 
 class TicketApi {
-  static get id => null;
+  get id => null;
+
+  // static get id => null;
+  // get the ticket from the api using the id of the appartement
+  // static Future<List<Ticket>> getTickets(int id) async {
 
 
-  static Future<List<Ticket>> getTickets() async {
-    var url = Uri.parse('http://localhost:3000/appartement/'+id.toString()+'ticket');
+  static Future<List<Ticket>> getTickets(int id) async {
+    // var url = Uri.parse('http://localhost:3000/appartement/'+id.toString()+'ticket');
+
+    // 
+    var url = Uri.parse('http://localhost:3000/appartement/'+id.toString()+'/ticket');
     var response = await http.get(url);
     List<Ticket> ticket = [];
     if (response.statusCode == 200) {

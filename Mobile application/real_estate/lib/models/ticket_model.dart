@@ -2,25 +2,28 @@
 
 class Ticket {
   int ticket_Id;
+  int appart_Id;
   String title;
   String description;
   String status;
-  int appartementId;
+  
 
   Ticket({
     required this.ticket_Id,
+    required this.appart_Id,
     required this.title,
     required this.description,
     required this.status,
-    required this.appartementId});
+    });
 
   factory Ticket.fromJson(Map<String, dynamic> json) {
     return Ticket(
       ticket_Id: json['ticket_Id'],
+      appart_Id: json['appart_Id'],
       title: json['title'],
       description: json['description'],
       status: json['status'],
-      appartementId: json['appartementId'],
+      
     );
   }
 
@@ -32,7 +35,7 @@ class Ticket {
 
   @override
   String toString() {
-    return 'Ticket{ticket_Id: $ticket_Id, title: $title, description: $description, status: $status, appartementId: $appartementId}';
+    return 'Ticket{ticket_Id: $ticket_Id,appart_Id: $appart_Id, title: $title, description: $description, status: $status}';
   }
 
 }
