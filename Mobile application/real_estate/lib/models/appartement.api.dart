@@ -31,5 +31,27 @@ class AppartementApi {
     }
     return false;
   }
+
+  // Add an appartement
+  static Future<bool> addAppartement(Appartement appartement) async {
+    var url = Uri.parse('http://localhost:3000/appartement');
+    var response = await http.post(url, body: jsonEncode(appartement.toJson()));
+    if (response.statusCode == 200) {
+      return true;
+    }
+    return false;
+  }
+
+  // Update an appartement
+  static Future<bool> updateAppartement(Appartement appartement) async {
+    var url = Uri.parse('http://localhost:3000/appartement/${appartement.id}');
+    var response = await http.put(url, body: jsonEncode(appartement.toJson()));
+    if (response.statusCode == 200) {
+      return true;
+    }
+    return false;
+  }
+
+  
   
 }

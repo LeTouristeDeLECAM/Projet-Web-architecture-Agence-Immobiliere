@@ -11,10 +11,15 @@ import 'package:real_estate/route/route.dart'as route  ;
 
 class TicketPage extends StatefulWidget {
   @override
-  _TicketPageState createState() => _TicketPageState();
+  _TicketPageState createState() => _TicketPageState(id: null);
 }
 
 class _TicketPageState extends State<TicketPage> {
+
+  final int id ; 
+  _TicketPageState({required this.id});
+
+  
 
   List<Ticket> tickets = [];
   bool _isLoading = true;

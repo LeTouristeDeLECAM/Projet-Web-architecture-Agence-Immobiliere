@@ -14,6 +14,7 @@ class TicketApi {
   // static Future<List<Ticket>> getTickets(int id) async {
 
 
+  // get ticket list from the api using the id of the appartement
   static Future<List<Ticket>> getTickets(int id) async {
     // var url = Uri.parse('http://localhost:3000/appartement/'+id.toString()+'ticket');
 
@@ -31,5 +32,19 @@ class TicketApi {
     }
     return ticket;
   }
+
+  // Get a ticket from the api using the id of the ticket
+  static Future<Ticket> getTicket(int id) async {
+    var url = Uri.parse('http://localhost:3000/ticket/$id');
+    var response = await http.get(url);
+    Ticket ticket = Ticket();
+    if (response.statusCode == 200) {
+      var body = jsonDecode(response.body);
+      ticket = Ticket.fromJson(body);
+    }
+    return ticket;
+  }
+
+  
 }
 

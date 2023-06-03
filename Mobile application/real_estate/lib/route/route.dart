@@ -22,11 +22,16 @@ const String searchTicketRoute = '/searchTicket/$id';
 // Controller for the routes
 
 Route<dynamic> controller(RouteSettings settings) {
+
+  final args = settings.arguments;
+
   switch (settings.name) {
     case homePage:
       return MaterialPageRoute(builder: (context) => HomePage());
     case ticketRoute:
-      return MaterialPageRoute(builder: (context) => TicketPage());
+      return MaterialPageRoute(builder: (context) => TicketPage( 
+        id: args,
+      ));
     case loginRoute:
       return MaterialPageRoute(builder: (context) => LoginPage());
     case addAppartementRoute:
