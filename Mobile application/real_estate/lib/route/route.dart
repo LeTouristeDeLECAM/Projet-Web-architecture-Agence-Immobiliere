@@ -6,6 +6,10 @@ import 'package:real_estate/views/login.dart';
 import 'package:real_estate/views/addAppart.dart';
 import 'package:real_estate/views/editAppart.dart';
 import 'package:real_estate/models/appartement.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+
 
 
 
@@ -18,6 +22,9 @@ const String loginRoute = '/login';
 const String addAppartementRoute = '/addAppartement';
 const String editAppartementRoute = '/editAppartement/$id';
 const String searchTicketRoute = '/searchTicket/$id';
+
+
+// token to pass to the route
 
 
 // Controller for the routes

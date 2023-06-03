@@ -2,6 +2,8 @@ import 'dart:convert';
 // import 'dart:html';
 import 'package:real_estate/models/appartement.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 
 
 
@@ -25,7 +27,14 @@ class AppartementApi {
   // Delete an appartement
   static Future<bool> deleteAppartement(int id) async {
     var url = Uri.parse('http://localhost:3000/appartement/$id');
-    var response = await http.delete(url);
+
+    final storage = FlutterSecureStorage();
+    String? token = await storage.read(key: 'token');
+
+    var headers = {'Authorization': 'Bearer $token'};
+    print (headers);
+
+    var response = await http.delete(url, headers: headers);
     if (response.statusCode == 200) {
       return true;
     }
@@ -35,6 +44,13 @@ class AppartementApi {
   // Add an appartement
   static Future<bool> addAppartement(Appartement appartement) async {
     var url = Uri.parse('http://localhost:3000/appartement');
+
+    final storage = FlutterSecureStorage();
+    String? token = await storage.read(key: 'token');
+
+    var headers = {'Authorization': 'Bearer $token'};
+    print (headers);
+
     var response = await http.post(url, body: jsonEncode(appartement.toJson()));
     if (response.statusCode == 200) {
       return true;
@@ -45,7 +61,21 @@ class AppartementApi {
   // Update an appartement
   static Future<bool> updateAppartement(Appartement appartement) async {
     var url = Uri.parse('http://localhost:3000/appartement/${appartement.appart_Id}');
-    var response = await http.put(url, body: jsonEncode(appartement.toJson()));
+
+    final storage = FlutterSecureStorage();
+    String? token = await storage.read(key: 'token');
+
+    var headers = {'Authorization': 'Bearer $token'};
+    print (headers);
+
+
+    // header contains the token
+
+
+
+
+
+    var response = await http.put(url, body: jsonEncode(appartement.toJson()), headers: headers);
     if (response.statusCode == 200) {
       return true;
     }

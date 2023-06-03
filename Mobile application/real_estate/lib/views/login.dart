@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate/route/route.dart'as route  ;
+import 'package:real_estate/models/login.api.dart';
 
 // class LoginPage extends StatefulWidget {
 //   const LoginPage({Key? key}) : super(key: key);
@@ -32,7 +33,10 @@ class LoginPage extends StatelessWidget {
             'Login',
             style: TextStyle(color: Colors.white),
           ),
-          onPressed: () => Navigator.pushNamed(context, route.homePage),
+          onPressed: () {
+            LoginApi.login('email', 'password');
+            Navigator.pushNamed(context, route.homePage);}
+          
           // color: Colors.blue,
         ),
       ),
