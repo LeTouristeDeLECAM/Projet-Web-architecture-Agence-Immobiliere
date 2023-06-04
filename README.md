@@ -60,6 +60,13 @@ Path : `Mobile application\real_estate`
 
 commande : `flutter run`
 
+Preview :
+![Preview]( 
+    documentation\HomePageMobileAPP_flutter.JPG
+    "Preview")
+
+
+
 
 
 
