@@ -65,7 +65,7 @@ class AppartementApi {
 
   // Update an appartement
   static Future<bool> updateAppartement(Appartement appartement) async {
-    var url = Uri.parse('http://localhost:3000/appartement/${appartement.appart_Id}');
+    var url = Uri.parse('http://localhost:3000/appartement/${appartement.appart_Id}?title=${appartement.title}&description=${appartement.description}&price=${appartement.price}&surface=${appartement.surface}&nbRooms=${appartement.nbRooms}&address=${appartement.address}');
 
     final storage = FlutterSecureStorage();
     String? token = await storage.read(key: 'token');
