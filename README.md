@@ -63,13 +63,16 @@ commande : `flutter run`
 Preview :
 
 Home Page
-<img src="documentation/HomePageMobileAPP_flutter.JPG" height="160" width="160">
+
+<img src="documentation/HomePageMobileAPP_flutter.JPG" scale="0.5" >
 
 Ticket List Page
-<img src="https://github.com/LeTouristeDeLECAM/Projet-Web-architecture-Agence-Immobiliere/blob/main/documentation/TicketListMobileAPP_flutter.JPG" height="160" width="160" >
+
+<img src="documentation/TicketListMobileAPP_flutter.JPG" scale="0.5" >
 
 Edit Page
-<img src="https://github.com/LeTouristeDeLECAM/Projet-Web-architecture-Agence-Immobiliere/blob/main/documentation/EditPageMobileAPP_flutter.JPG" height="160" width="160" >
+
+<img src="documentation/EditPageMobileAPP_flutter.JPG" scale="0.5" >
 
 
 
