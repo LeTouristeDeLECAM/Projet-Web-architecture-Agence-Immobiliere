@@ -43,13 +43,15 @@ class AppartementApi {
 
   // Add an appartement
   static Future<bool> addAppartement(Appartement appartement) async {
-    var url = Uri.parse('http://localhost:3000/appartement');
+    var url = Uri.parse('http://localhost:3000/appartement?title=${appartement.title}&description=${appartement.description}&price=${appartement.price}&surface=${appartement.surface}&nbRooms=${appartement.nbRooms}&address=${appartement.address}');
 
     final storage = FlutterSecureStorage();
     String? token = await storage.read(key: 'token');
 
     var headers = {'Authorization': 'Bearer $token'};
     print (headers);
+
+
 
     var response = await http.post(url, body: jsonEncode(appartement.toString()), headers: headers);
     if (response.statusCode == 200) {

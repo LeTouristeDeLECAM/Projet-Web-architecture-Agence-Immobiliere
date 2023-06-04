@@ -27,6 +27,25 @@ class LoginPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Login Page'),
       ),
+
+
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+
+            // search ticket button
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, route.homePage);
+              },
+              icon: Icon(Icons.home),
+            ),
+          ]
+        ),
+      ),
+
+      
       body: Center(
         child: ElevatedButton(
           child: Text(

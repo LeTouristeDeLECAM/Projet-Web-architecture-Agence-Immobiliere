@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate/models/appartement.dart';
 import 'package:real_estate/models/appartement.api.dart';
+import 'package:real_estate/route/route.dart'as route  ;
 
 class AddAppartementPage extends StatefulWidget {
   @override
@@ -67,7 +68,22 @@ class _AddAppartementPageState extends State<AddAppartementPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      // appBar: AppBar(title: Text('Add an appartement')),
+      appBar: AppBar(title: Text('Add an appartement')),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+
+            // search ticket button
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, route.homePage);
+              },
+              icon: Icon(Icons.home),
+            ),
+          ]
+        ),
+      ),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.all(16),
