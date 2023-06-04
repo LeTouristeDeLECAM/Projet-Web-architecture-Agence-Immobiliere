@@ -54,22 +54,20 @@ Route<dynamic> controller(RouteSettings settings) {
     case addAppartementRoute:
       return MaterialPageRoute(builder: (context) => AddAppartementPage());
     case editAppartementRoute:
-      final Appartement appartement = {
 
-        'appart_Id': id,
-        'title': 'title',
-        'description': 'description',
-        'price': 100,
-        'surface': 100,
-        'nbRooms': 100,
-        'address': 'address',
-        'image': 'image',
-        'createdAt': 'createdAt',
-        'updatedAt': 'updatedAt',
-        'userId': 'userId',
-      } as Appartement;
+      final Appartement appartement = Appartement(
+        appart_Id: 20,
+        title: 'title_A1',
+        description: 'description_A1',
+        price: 100,
+        surface: 100,
+        nbRooms: 100,
+        address: 'address_A1',
+      );
 
-      return MaterialPageRoute(builder: (context) => EditAppartementPage(appartement:appartement , ));
+      print (appartement.toString());
+
+      return MaterialPageRoute(builder: (context) => EditAppartementPage(appartement:appartement));
     default:
       throw ('Route not found');
   }

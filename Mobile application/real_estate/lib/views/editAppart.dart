@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate/models/appartement.dart';
 import 'package:real_estate/models/appartement.api.dart';
+import 'package:real_estate/route/route.dart'as route  ;
 
 class EditAppartementPage extends StatefulWidget {
   final Appartement appartement;
@@ -87,6 +88,24 @@ class _EditAppartementPageState extends State<EditAppartementPage> {
       appBar: AppBar(
         title: Text('Edit Appartement'),
       ),
+
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+
+            // search ticket button
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, route.homePage);
+              },
+              icon: Icon(Icons.home),
+            ),
+          ]
+        ),
+      ),
+
+
       body: _isLoading
           ? Center(
               child: CircularProgressIndicator(),
