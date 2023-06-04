@@ -54,6 +54,7 @@ N° cours : 4eiam40
 Crédit : 3 ECTS
 
 Descriptif des attentes du cours : https://plus.ecam.be/public/fiche/2022/4eiam40
+
 Instructions du projet: https://quentin.lurkin.xyz/courses/mobile/project2023/index.html
  
 Projet réalisé avec Flutter.
