@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:real_estate/models/appartement.dart';
 import 'package:real_estate/models/appartement.api.dart';
 import 'package:real_estate/route/route.dart' as route;
+import 'package:real_estate/models/ticket.api.dart';
 
 class SearchTicketIDPage extends StatefulWidget {
   @override
@@ -25,30 +26,30 @@ class _SearchTicketIDPageState extends State<SearchTicketIDPage> {
     super.dispose();
   }
 
-  // Future<void> _searchTicketID() async {
-  //   if (_formKey.currentState!.validate()) {
-  //     setState(() {
-  //       _isLoading = true;
-  //     });
-  //     final Appartement appartement = Appartement(
-  //       ticketID: _ticketIDController.text,
-  //     );
-  //     final bool result = await AppartementApi.searchTicketID(appartement);
-  //     setState(() {
-  //       _isLoading = false;
-  //     });
-  //     final String message =
-  //         result ? 'Your ticket has been found' : 'Error';
+  Future<void> _searchTicketID() async {
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        _isLoading = true;
+      });
+      final int appartement_id = int.parse (_ticketIDController.text);
 
-  //     ScaffoldMessenger.showSnackBar   
-  //     _scaffoldKey.currentState.showSnackBar(
-  //       SnackBar(
-  //         content: Text(message),
-  //         duration: Duration(seconds: 3),
-  //       ),
-  //     );
-  //   }
-  // }
+      final bool result = await TicketApi.getTickets(appartement_id) != null;
+      setState(() {
+        _isLoading = false;
+      });
+      final String message =
+          result ? 'Your ticket has been found' : 'Error';
+  
+      _scaffoldKey.currentState!.showSnackBar(
+        SnackBar(
+          content: Text(message),
+          duration: Duration(seconds: 3),
+        ),
+      );
+      Navigator.pushNamed(context, route.ticketRoute, arguments: appartement_id);
+
+    }
+  }
 
 
   
@@ -105,7 +106,7 @@ class _SearchTicketIDPageState extends State<SearchTicketIDPage> {
                   : ElevatedButton(
                       child: Text('Search'),
                       onPressed: () {
-                        Navigator.pushNamed(context, route.ticketRoute, arguments: 1);
+                        _searchTicketID();
                   },
                     ),
             ],
