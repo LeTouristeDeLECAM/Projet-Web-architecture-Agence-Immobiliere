@@ -1,4 +1,4 @@
-# Projet-Web-architecture-Agence-Immobiliere
+# Projet-Web-architecture-Agence-Immobiliere & Mobile-application
 Dans le cadres des cours de 4ème année à l'ECAM, Il à été décider de grouper les cours d'architecture Web et 
 de développement mobile, concrètement le projet Web et mobile utilisent la même API et le même serveur backend.
 
