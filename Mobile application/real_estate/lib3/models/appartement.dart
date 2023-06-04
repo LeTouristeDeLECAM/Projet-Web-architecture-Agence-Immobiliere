@@ -2,6 +2,7 @@
 // based on the API https://app.swaggerhub.com/apis/LeTouristeDeLECAM/Agence_Immobiliere/1.0
 
 import 'dart:js';
+import 'dart:convert';
 
 class Appartement {
   final int appart_Id;
@@ -43,11 +44,13 @@ static List<Appartement> appartementsFromSnapshot(List snapshot) {
 
 @override
   String toString() {
-    return 'Appartement{appart_Id: $appart_Id, title: $title, description: $description, price: $price, surface: $surface, nbRooms: $nbRooms, address: $address}';
+    return 'appart_Id: $appart_Id, title: $title, description: $description, price: $price, surface: $surface, nbRooms: $nbRooms, address: $address';
   }
 
   // JsObject toJson() {
-  //   return JsObject.jsify({
+  //   print ('toJson');
+    
+  //   var js= JsObject.jsify({
   //     'appart_Id': appart_Id,
   //     'title': title,
   //     'description': description,
@@ -57,15 +60,18 @@ static List<Appartement> appartementsFromSnapshot(List snapshot) {
   //     'address': address,
   //   });
 
-    // return {
-    //   'appart_Id': appart_Id,
-    //   'title': title,
-    //   'description': description,
-    //   'price': price,
-    //   'surface': surface,
-    //   'nbRooms': nbRooms,
-    //   'address': address,
-    // };
+  //   print (js.toString());
+  //   return js;
+
+  //   // return {
+  //   //   'appart_Id': appart_Id,
+  //   //   'title': title,
+  //   //   'description': description,
+  //   //   'price': price,
+  //   //   'surface': surface,
+  //   //   'nbRooms': nbRooms,
+  //   //   'address': address,
+  //   // };
   // }
 
 }

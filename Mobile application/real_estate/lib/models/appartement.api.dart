@@ -51,7 +51,7 @@ class AppartementApi {
     var headers = {'Authorization': 'Bearer $token'};
     print (headers);
 
-    var response = await http.post(url, body: jsonEncode(appartement.toJson()));
+    var response = await http.post(url, body: jsonEncode(appartement.toString()), headers: headers);
     if (response.statusCode == 200) {
       return true;
     }
@@ -75,7 +75,7 @@ class AppartementApi {
 
 
 
-    var response = await http.put(url, body: jsonEncode(appartement.toJson()), headers: headers);
+    var response = await http.put(url, body: jsonEncode(appartement.toString()), headers: headers);
     if (response.statusCode == 200) {
       return true;
     }
