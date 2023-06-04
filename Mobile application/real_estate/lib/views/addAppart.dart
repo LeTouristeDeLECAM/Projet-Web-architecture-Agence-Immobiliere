@@ -74,13 +74,19 @@ class _AddAppartementPageState extends State<AddAppartementPage> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
 
-            // search ticket button
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, route.loginRoute);
+              },
+              icon: Icon(Icons.login),
+            ),
             IconButton(
               onPressed: () {
                 Navigator.pushNamed(context, route.homePage);
               },
               icon: Icon(Icons.home),
             ),
+            
           ]
         ),
       ),
