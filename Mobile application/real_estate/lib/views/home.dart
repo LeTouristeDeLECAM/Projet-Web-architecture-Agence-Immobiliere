@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
             // search ticket button
             IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, route.searchTicketRoute , arguments: {'id': 1});
+                Navigator.pushNamed(context, route.searchTicketRoute , arguments:1);
               },
               icon: Icon(Icons.search),
             ),

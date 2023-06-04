@@ -33,7 +33,7 @@ class TicketApi {
     return ticket;
   }
 
-  // Get a ticket from the api using the id of the ticket
+  // // Get a ticket from the api using the id of the ticket
   // static Future<Ticket> getTicket(int id) async {
   //   var url = Uri.parse('http://localhost:3000/ticket/$id');
   //   var response = await http.get(url);

@@ -10,6 +10,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:real_estate/models/appartement.api.dart';
 
+import '../views/searchTicketID.dart';
+
 
 
 
@@ -81,34 +83,11 @@ Route<dynamic> controller(RouteSettings settings) {
         );
       },
     );
+
+    case searchTicketRoute:
+      return MaterialPageRoute(builder: (context) => SearchTicketIDPage());
     default:
       throw ('Route not found');
   }
 }
 
-// print (appart);
-
-      // appartement = Appartement(
-      //   appart_Id: int.parse(id),
-      //   title: 'title_A1',
-      //   description: 'description_A1',
-      //   price: 100,
-      //   surface: 100,
-      //   nbRooms: 100,
-      //   address: 'address_A1',
-      // );
-
-
-
-
-       // final Appartement appartement = Appartement(
-      //   appart_Id: int.parse(id),
-      //   title: 'title_A1',
-      //   description: 'description_A1',
-      //   price: 100,
-      //   surface: 100,
-      //   nbRooms: 100,
-      //   address: 'address_A1',
-      // );
-
-      // print (appartement.toString());
