@@ -8,6 +8,7 @@ import 'package:real_estate/views/editAppart.dart';
 import 'package:real_estate/models/appartement.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:real_estate/models/appartement.api.dart';
 
 
 
@@ -53,22 +54,61 @@ Route<dynamic> controller(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => LoginPage());
     case addAppartementRoute:
       return MaterialPageRoute(builder: (context) => AddAppartementPage());
+    // case editAppartementRoute:
+
+    //   var appart = AppartementApi.getAppartement(int.parse(id));
+    //   Appartement appartement; 
+    //   appart.then((value ) => appartement = value);
+    //   print (appartement);
+
+    //   return MaterialPageRoute(builder: (context) => EditAppartementPage(appartement: appartement));
+
+
     case editAppartementRoute:
-
-      final Appartement appartement = Appartement(
-        appart_Id: 20,
-        title: 'title_A1',
-        description: 'description_A1',
-        price: 100,
-        surface: 100,
-        nbRooms: 100,
-        address: 'address_A1',
-      );
-
-      print (appartement.toString());
-
-      return MaterialPageRoute(builder: (context) => EditAppartementPage(appartement:appartement));
+    return MaterialPageRoute(
+      builder: (context) {
+        return FutureBuilder<Appartement>(
+          future: AppartementApi.getAppartement(int.parse(id)),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return EditAppartementPage(appartement: snapshot.data!);
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else {
+              return CircularProgressIndicator();
+            }
+          },
+        );
+      },
+    );
     default:
       throw ('Route not found');
   }
 }
+
+// print (appart);
+
+      // appartement = Appartement(
+      //   appart_Id: int.parse(id),
+      //   title: 'title_A1',
+      //   description: 'description_A1',
+      //   price: 100,
+      //   surface: 100,
+      //   nbRooms: 100,
+      //   address: 'address_A1',
+      // );
+
+
+
+
+       // final Appartement appartement = Appartement(
+      //   appart_Id: int.parse(id),
+      //   title: 'title_A1',
+      //   description: 'description_A1',
+      //   price: 100,
+      //   surface: 100,
+      //   nbRooms: 100,
+      //   address: 'address_A1',
+      // );
+
+      // print (appartement.toString());

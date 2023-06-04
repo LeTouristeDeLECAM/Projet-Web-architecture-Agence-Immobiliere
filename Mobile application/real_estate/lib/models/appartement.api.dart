@@ -60,6 +60,9 @@ class AppartementApi {
     return false;
   }
 
+
+
+
   // Update an appartement
   static Future<bool> updateAppartement(Appartement appartement) async {
     var url = Uri.parse('http://localhost:3000/appartement/${appartement.appart_Id}');
@@ -72,16 +75,24 @@ class AppartementApi {
 
 
     // header contains the token
-
-
-
-
-
     var response = await http.put(url, body: jsonEncode(appartement.toString()), headers: headers);
     if (response.statusCode == 200) {
       return true;
     }
     return false;
+  }
+
+
+  // Get an appartement
+  static Future<Appartement> getAppartement(int id) async {
+    var url = Uri.parse('http://localhost:3000/appartement/$id');
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      var body = jsonDecode(response.body);
+      return Appartement.fromJson(body);
+    }
+    // return Appartement.fromJson(body);
+    return Appartement(address: '', appart_Id: 0, description: '', nbRooms: 0, price: 0, surface: 0, title: '');
   }
 
   
