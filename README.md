@@ -64,15 +64,15 @@ Preview :
 
 Home Page
 
-<img src="documentation/HomePageMobileAPP_flutter.JPG" scale="0.1" >
+<img src="documentation/HomePageMobileAPP_flutter.JPG" scale="0.05" >
 
 Ticket List Page
 
-<img src="documentation/TicketListMobileAPP_flutter.JPG" scale="0.1" >
+<img src="documentation/TicketListMobileAPP_flutter.JPG" scale="0.05" >
 
 Edit Page
 
-<img src="documentation/EditPageMobileAPP_flutter.JPG" scale="0.1" >
+<img src="documentation/EditPageMobileAPP_flutter.JPG" scale="0.05" >
 
 
 
