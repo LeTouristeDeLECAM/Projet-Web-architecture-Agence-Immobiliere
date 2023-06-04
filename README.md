@@ -61,9 +61,17 @@ Path : `Mobile application\real_estate`
 commande : `flutter run`
 
 Preview :
-![Preview]( 
-    documentation\HomePageMobileAPP_flutter.JPG
-    "Preview")
+
+Home Page
+<img src="documentation/HomePageMobileAPP_flutter.JPG" height="160" width="160">
+
+Ticket List Page
+<img src="https://github.com/LeTouristeDeLECAM/Projet-Web-architecture-Agence-Immobiliere/blob/main/documentation/TicketListMobileAPP_flutter.JPG" height="160" width="160" >
+
+Edit Page
+<img src="https://github.com/LeTouristeDeLECAM/Projet-Web-architecture-Agence-Immobiliere/blob/main/documentation/EditPageMobileAPP_flutter.JPG" height="160" width="160" >
+
+
 
 
 
